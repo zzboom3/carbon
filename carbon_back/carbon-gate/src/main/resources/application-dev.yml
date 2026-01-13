@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.100.128:3333/carbon?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+  redis:
+    host: 192.168.100.128
+    port: 6379
+    # password: 1234
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.128:8848
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+      enabled: true
+
+knife4j:
+  nacos:
+    enable: true
+    serviceUrl: http://192.168.100.128:8848/nacos/
+
+logging:
+  level:
+    com.carbon.gate.mapper: debug
+
+zuul:
+  routes:
+    trade:
+      url: http://localhost:9005
+      stripPrefix: false

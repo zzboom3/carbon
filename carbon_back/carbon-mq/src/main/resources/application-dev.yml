@@ -1,0 +1,30 @@
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: carbon-system
+    send-message-timeout: 300000
+
+#spring配置
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3333/carbon?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: root
+  #redis
+  redis:
+    host: localhost
+    port: 6379
+    # password: 1234
+  #nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+
+# 日志
+logging:
+  level:
+    com.carbon.trade.mapper: debug
+
