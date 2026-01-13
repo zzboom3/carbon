@@ -1,0 +1,43 @@
+// base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #2E7D32;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #2E7D32;
+$lightGreen: #4CAF50;
+$white: white;
+$new-blue:#207AFF;
+
+// Theme Colors
+$eco-green: #2E7D32;
+$eco-light: #4CAF50;
+$eco-bg: #E8F5E9;
+$text-main: #1B5E20;
+
+// sidebar
+$menuText:#424C5C;
+$menuActiveText:#2E7D32;
+$subMenuActiveText:#2E7D32;
+
+$menuBg:white;
+$menuHover:#E8F5E9;
+
+$subMenuBg:white;
+$subMenuHover:#E8F5E9;
+
+$sideBarWidth: 210px;
+
+:export {
+  menuText: $menuText;
+  menuActiveText: $menuActiveText;
+  menuActiveBg:$menuActiveText;
+  subMenuActiveText: $subMenuActiveText;
+  menuBg: $menuBg;
+  menuHover: $menuHover;
+  subMenuBg: $subMenuBg;
+  subMenuHover: $subMenuHover;
+  sideBarWidth: $sideBarWidth;
+}

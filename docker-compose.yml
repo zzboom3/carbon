@@ -1,0 +1,42 @@
+version: '3'
+services:
+  nacos:
+    image: nacos/nacos-server:v2.2.0
+    container_name: nacos-standalone
+    environment:
+      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=empty
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    restart: always
+
+  redis:
+    image: redis:latest
+    container_name: redis-standalone
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass 1234
+    restart: always
+
+  rocketmq-namesrv:
+    image: apache/rocketmq:4.9.4
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    command: sh mqnamesrv
+    restart: always
+
+  rocketmq-broker:
+    image: apache/rocketmq:4.9.4
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+    environment:
+      - NAMESRV_ADDR=rocketmq-namesrv:9876
+    command: sh mqbroker -n rocketmq-namesrv:9876
+    depends_on:
+      - rocketmq-namesrv
+    restart: always
