@@ -36,6 +36,10 @@ public class RegisterParam implements Serializable {
     @NotBlank(message="请输入手机号")
     private String phone;
 
+    @ApiModelProperty(value = "邮箱")
+    @NotBlank(message="请输入邮箱")
+    private String email;
+
     @ApiModelProperty(value = "验证码")
     @NotBlank(message="请输入验证码")
     private String code;

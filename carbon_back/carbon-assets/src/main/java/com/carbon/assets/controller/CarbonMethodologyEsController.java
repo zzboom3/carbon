@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -43,93 +44,86 @@ public class CarbonMethodologyEsController extends BaseController {
 
     @Autowired
     private MethodologyRepository methodologyRepository;
+
     @PostMapping("/getByKeyword")
     @ApiOperation(value = "方法学全文检索列表",notes = "方法学全文检索列表")
-    public ApiResult<Map> findByKeyword(@Valid @RequestBody(required = false) CarbonMethodologyQueryParam carbonMethodologyQueryParam)
-    {
-        if(carbonMethodologyQueryParam.getSearchKey()!=""||carbonMethodologyQueryParam.getSearchKey()!=null)
-        {
-            String content=carbonMethodologyQueryParam.getSearchKey();
-            String name=carbonMethodologyQueryParam.getSearchKey();
-            String industryCodeName=carbonMethodologyQueryParam.getSearchKey();
-            String dictCode=carbonMethodologyQueryParam.getSearchKey();
-            Page<CarbonMethodologyContent> methodologies= methodologyRepository.
-                    findByNameOrContentOrIndustryCodeNameOrDictCode(content,name,industryCodeName,dictCode,PageRequest.of(0,10000));
-            List<CarbonMethodologyContent> methodologyList = methodologies.toList();
-            return ApiResult.ok(getSearchResMap(methodologies,carbonMethodologyQueryParam));
-        }else {
-            Page<CarbonMethodologyContent> methodologies= methodologyRepository.
-                    findAll(PageRequest.of(carbonMethodologyQueryParam.getCurrent()-1,carbonMethodologyQueryParam.getSize()));
-            List<CarbonMethodologyContent> methodologyList = methodologies.toList();
-            return ApiResult.ok(getSearchResMap(methodologies,carbonMethodologyQueryParam));
+    public ApiResult<Map<String, Object>> findByKeyword(@Valid @RequestBody(required = false) CarbonMethodologyQueryParam carbonMethodologyQueryParam) {
+        CarbonMethodologyQueryParam param = carbonMethodologyQueryParam == null ? new CarbonMethodologyQueryParam() : carbonMethodologyQueryParam;
+
+        boolean hasKeyword = StringUtils.hasText(param.getSearchKey());
+        boolean hasFilter = param.getCertificationCriteria() != null
+                || StringUtils.hasText(param.getFieldCode())
+                || StringUtils.hasText(param.getIndustryCode())
+                || StringUtils.hasText(param.getStatusCode());
+
+        try {
+            Page<CarbonMethodologyContent> methodologies;
+            if (hasKeyword) {
+                String k = param.getSearchKey();
+                methodologies = methodologyRepository.findByNameOrContentOrIndustryCodeNameOrDictCode(
+                        k, k, k, k, PageRequest.of(0, 10000)
+                );
+            } else if (hasFilter) {
+                methodologies = methodologyRepository.findAll(PageRequest.of(0, 10000));
+            } else {
+                methodologies = methodologyRepository.findAll(PageRequest.of(param.getCurrent() - 1, param.getSize()));
+            }
+            return ApiResult.ok(getSearchResMap(methodologies, param, hasFilter || hasKeyword));
+        } catch (Exception e) {
+            log.error("methodology es search failed, param={}", JSONUtil.toJsonStr(param), e);
+            return ApiResult.ok(emptyResMap(param));
         }
     }
 
     @PostMapping("/getByKeyword2")
     @ApiOperation(value = "方法学全文检索列表",notes = "方法学全文检索列表")
-    public ApiResult<Map> findByKeyword2(@Valid @RequestBody(required = false) CarbonMethodologyQueryParam carbonMethodologyQueryParam)
-    {
-        if(carbonMethodologyQueryParam.getSearchKey()!=""||carbonMethodologyQueryParam.getSearchKey()!=null)
-        {
-            String content=carbonMethodologyQueryParam.getSearchKey();
-            String name=carbonMethodologyQueryParam.getSearchKey();
-            String industryCodeName=carbonMethodologyQueryParam.getSearchKey();
-            String dictCode=carbonMethodologyQueryParam.getSearchKey();
-            Page<CarbonMethodologyContent> methodologies= methodologyRepository.
-                    findByNameOrContentOrIndustryCodeNameOrDictCode(content,name,industryCodeName,dictCode,PageRequest.of(0,10000));
-            List<CarbonMethodologyContent> methodologyList = methodologies.toList();
-            return ApiResult.ok(getSearchResMap(methodologies,carbonMethodologyQueryParam));
-        }else {
-            Page<CarbonMethodologyContent> methodologies= methodologyRepository.
-                    findAll(PageRequest.of(carbonMethodologyQueryParam.getCurrent()-1,carbonMethodologyQueryParam.getSize()));
-            List<CarbonMethodologyContent> methodologyList = methodologies.toList();
-            return ApiResult.ok(getSearchResMap(methodologies,carbonMethodologyQueryParam));
-        }
+    public ApiResult<Map<String, Object>> findByKeyword2(@Valid @RequestBody(required = false) CarbonMethodologyQueryParam carbonMethodologyQueryParam) {
+        return findByKeyword(carbonMethodologyQueryParam);
     }
 
-    Map getSearchResMap(Page<CarbonMethodologyContent> methodologies,CarbonMethodologyQueryParam carbonMethodologyQueryParam)
-    {
-        Long total=methodologies.getTotalElements();
-        List methodList=new ArrayList();
-        String certificationCriteria;
-        certificationCriteria=carbonMethodologyQueryParam.getCertificationCriteria()==null?
-                null:"00"+carbonMethodologyQueryParam.getCertificationCriteria().toString();
-        String fieldCode=carbonMethodologyQueryParam.getFieldCode();
-        String industryCode=carbonMethodologyQueryParam.getIndustryCode();
-        String statusCode=carbonMethodologyQueryParam.getStatusCode();
-        if (certificationCriteria!=null||fieldCode!=null||industryCode!=null||statusCode!=null)
-        {
-            for (CarbonMethodologyContent carbonMethodologyContent :methodologies.getContent())
-            {
-                if(Match(certificationCriteria,fieldCode,industryCode,statusCode,carbonMethodologyContent)==1)
-                {
-                    carbonMethodologyContent.setContent("");
-                    methodList.add(carbonMethodologyContent);
-                }
-                else {
-                    total-=1;
+    private Map<String, Object> emptyResMap(CarbonMethodologyQueryParam param) {
+        Map<String, Object> res = new HashMap<>();
+        res.put("current", param.getCurrent());
+        res.put("total", 0L);
+        res.put("data", new ArrayList<>());
+        return res;
+    }
+
+    private Map<String, Object> getSearchResMap(Page<CarbonMethodologyContent> methodologies, CarbonMethodologyQueryParam param, boolean needSlice) {
+        String certificationCriteria = param.getCertificationCriteria() == null ? null : "00" + param.getCertificationCriteria();
+        String fieldCode = param.getFieldCode();
+        String industryCode = param.getIndustryCode();
+        String statusCode = param.getStatusCode();
+
+        List<CarbonMethodologyContent> filtered = new ArrayList<>();
+        for (CarbonMethodologyContent item : methodologies.getContent()) {
+            if (certificationCriteria != null || StringUtils.hasText(fieldCode) || StringUtils.hasText(industryCode) || StringUtils.hasText(statusCode)) {
+                if (Match(certificationCriteria, fieldCode, industryCode, statusCode, item) != 1) {
+                    continue;
                 }
             }
+            item.setContent("");
+            filtered.add(item);
         }
-        else {
-            for (CarbonMethodologyContent carbonMethodologyContent :methodologies.getContent())
-            {
-                carbonMethodologyContent.setContent("");
-                methodList.add(carbonMethodologyContent);
-            }
+
+        if (!needSlice) {
+            Map<String, Object> res = new HashMap<>();
+            res.put("current", param.getCurrent());
+            res.put("total", methodologies.getTotalElements());
+            res.put("data", filtered);
+            return res;
         }
-        List resList=new ArrayList();
-        int startNum=(carbonMethodologyQueryParam.getCurrent()*carbonMethodologyQueryParam.getSize()-carbonMethodologyQueryParam.getSize());
-        int endNum=startNum+carbonMethodologyQueryParam.getSize().intValue()<total
-                ?startNum+carbonMethodologyQueryParam.getSize().intValue():total.intValue();
-        for (int i=startNum;i<endNum;i++)
-        {
-            resList.add(methodList.get(i));
-        }
-        Map res=new HashMap();
-        res.put("current",carbonMethodologyQueryParam.getCurrent());
-        res.put("total",total);
-        res.put("data",resList);
+
+        int current = param.getCurrent() == null ? 1 : param.getCurrent();
+        int size = param.getSize() == null ? 10 : param.getSize();
+        int start = Math.max(0, (current - 1) * size);
+        int end = Math.min(filtered.size(), start + size);
+        List<CarbonMethodologyContent> pageItems = start >= filtered.size() ? new ArrayList<>() : filtered.subList(start, end);
+
+        Map<String, Object> res = new HashMap<>();
+        res.put("current", current);
+        res.put("total", (long) filtered.size());
+        res.put("data", pageItems);
         return res;
     }
 
@@ -155,4 +149,3 @@ public class CarbonMethodologyEsController extends BaseController {
         return 1;
     }
 }
-

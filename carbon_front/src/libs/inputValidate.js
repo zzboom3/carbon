@@ -23,9 +23,9 @@ export function validateMobile(str) {
   }
   
   // 检查验证码格式
-  export function validateSmsCode(str) {
-    return /^\d4$/.test(str);
-  }
+export function validateSmsCode(str) {
+    return /^\d{6}$/.test(str);
+}
 
   // 检验字符空
   export function validateIsEmpty(str) {

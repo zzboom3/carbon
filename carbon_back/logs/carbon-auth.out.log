@@ -1,0 +1,82 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.2.RELEASE)
+
+2026-01-18 02:19:26.823  INFO 34212 --- [           main] com.carbon.auth.AuthApplication          : The following profiles are active: dev
+2026-01-18 02:19:29.636  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:29.643  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:29.709  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18 02:19:29.721  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:29.722  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:29.735  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-01-18 02:19:29.753  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:29.756  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-18 02:19:29.784  INFO 34212 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 0 Redis repository interfaces.
+2026-01-18 02:19:29.935  WARN 34212 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2026-01-18 02:19:30.410  INFO 34212 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5de43425-a12c-3797-b7a6-6ea2f8ca79d9
+2026-01-18 02:19:30.463  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.assets.api.AssetsServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.466  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.auth.api.LoginCheckApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.469  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.chainmaker.api.ChainMakerServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.475  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.BmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.478  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.CmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.484  INFO 34212 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.system.api.SystemServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:32.652  INFO 34212 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2026-01-18 02:19:32.682  INFO 34212 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18 02:19:32.684  INFO 34212 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2026-01-18 02:19:33.395  INFO 34212 --- [           main] o.a.c.c.C.[.[localhost].[/authCenter]    : Initializing Spring embedded WebApplicationContext
+2026-01-18 02:19:33.397  INFO 34212 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6516 ms
+2026-01-18 02:19:36.041  INFO 34212 --- [           main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2026-01-18 02:19:38.296  INFO 34212 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.0 
+2026-01-18 02:19:49.852  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:19:49.854  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:19:54.089  INFO 34212 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-01-18 02:19:54.454  INFO 34212 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2026-01-18 02:19:54.575  WARN 34212 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:54.576  INFO 34212 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:54.590  WARN 34212 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:54.591  INFO 34212 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:54.953  INFO 34212 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:19:55.293  INFO 34212 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2026-01-18 02:19:55.901  WARN 34212 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.geo.Point to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:55.902  WARN 34212 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.geo.Point as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:55.904  WARN 34212 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.elasticsearch.core.geo.GeoPoint to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:55.905  WARN 34212 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.elasticsearch.core.geo.GeoPoint as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:56.158  INFO 34212 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Spring Data Elasticsearch: 4.0.2.RELEASE
+2026-01-18 02:19:56.160  INFO 34212 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client in build: 7.6.2
+2026-01-18 02:19:56.161  INFO 34212 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client used: 7.6.2
+2026-01-18 02:19:58.849  WARN 34212 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9001 is already in use
+2026-01-18 02:20:02.866  INFO 34212 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:20:05.910  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:05.913  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[192.168.100.128:9876] result: true
+2026-01-18 02:20:08.919  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:08.921  INFO 34212 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[192.168.100.128:9876] result: true
+2026-01-18 02:20:08.936  INFO 34212 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-01-18 02:20:08.937  INFO 34212 --- [           main] .c.NacosValueAnnotationBeanPostProcessor : class com.alibaba.nacos.spring.context.annotation.config.NacosValueAnnotationBeanPostProcessor was destroying!
+2026-01-18 02:20:08.940  INFO 34212 --- [           main] AnnotationNacosInjectedBeanPostProcessor : class com.alibaba.nacos.spring.beans.factory.annotation.AnnotationNacosInjectedBeanPostProcessor was destroying!
+2026-01-18 02:20:08.942  INFO 34212 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-18 02:20:08.993  INFO 34212 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-01-18 02:20:08.998 ERROR 34212 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9001 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9001 or configure this application to listen on another port.
+

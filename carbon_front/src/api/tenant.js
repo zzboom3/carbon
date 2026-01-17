@@ -213,7 +213,7 @@ export function putAccountUpdatePhone(data) {
 */
 export function getAccoutUpdateCode(phone) {
     return request({
-        url: '/system/sysAccount/update/code/' + phone,
+        url: '/system/sysAccount/update/phone/emailCode/' + phone,
         method: 'GET',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     })
@@ -241,6 +241,14 @@ export function putAccountSend(data) {
     return request({
         url: '/system/sysAccount/send/email',
         method: 'POST',
+        data
+    })
+}
+
+export function putAccountUpdateEmail(data) {
+    return request({
+        url: '/system/sysAccount/update/email',
+        method: 'PUT',
         data
     })
 }

@@ -4,6 +4,7 @@ import com.carbon.trade.entity.CarbonTradePrice;
 import com.carbon.common.service.BaseService;
 import com.carbon.trade.param.CarbonTradePriceQueryParam;
 import com.carbon.trade.param.IntendedTransactionParam;
+import com.carbon.trade.param.StartTradingParam;
 import com.carbon.trade.vo.CarbonTradePriceQueryVo;
 import com.carbon.common.api.Paging;
 
@@ -19,4 +20,7 @@ import java.io.Serializable;
  */
 public interface CarbonTradePriceService extends BaseService<CarbonTradePrice> {
 
+    void startTrading(StartTradingParam param);
+
+    void intendedTransaction(IntendedTransactionParam param);
 }

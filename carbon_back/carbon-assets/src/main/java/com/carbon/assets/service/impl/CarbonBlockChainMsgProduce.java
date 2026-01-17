@@ -66,16 +66,15 @@ public class CarbonBlockChainMsgProduce {
      */
     public CarbonBlockExchangeInfo getExchangeInfo(String txId) {
         ApiResult<TransactionRtVO> result = chainMakerServiceApi.queryTxByTxId(txId);
-        if(result.getCode()!=200){
-            return null;
-        }else {
-            CarbonBlockExchangeInfo info = new CarbonBlockExchangeInfo();
-            info.setTxInfo(result.getData().getTxInfo());
-            info.setBlockHash(result.getData().getBlockHash());
-            info.setTimestamp(DateUtil.format(new Date(result.getData().getTimestamp()),"yyyy-MM-dd HH:mm:ss"));
-            info.setTxInfo(result.getData().getTxInfo());
-            return info;
+        if (result == null || result.getCode() != 200 || result.getData() == null) {
+            throw new CommonBizException("区块链服务不可用");
         }
+        CarbonBlockExchangeInfo info = new CarbonBlockExchangeInfo();
+        info.setTxInfo(result.getData().getTxInfo());
+        info.setBlockHash(result.getData().getBlockHash());
+        info.setTimestamp(DateUtil.format(new Date(result.getData().getTimestamp()), "yyyy-MM-dd HH:mm:ss"));
+        info.setTxInfo(result.getData().getTxInfo());
+        return info;
 
     }
 
@@ -94,11 +93,15 @@ public class CarbonBlockChainMsgProduce {
             });
             ApiResult<ChainMakerRtVO> blockResponse = chainMakerServiceApi.AddCarbonOffset(map);
             if (blockResponse == null || blockResponse.getCode() != 200 || blockResponse.getData() == null) {
-                return null;
+                throw new CommonBizException("区块链上链失败");
             }
             return blockResponse.getData().getTxId();
         } catch (Exception e) {
-            return null;
+            log.error("碳减排资产上链失败", e);
+            if (e instanceof CommonBizException) {
+                throw (CommonBizException) e;
+            }
+            throw new CommonBizException("区块链上链失败");
         }
     }
 
@@ -122,8 +125,11 @@ public class CarbonBlockChainMsgProduce {
         param.setMetaData(carbonAssets.getMetaData());
         param.setMainList(carbonAssets.getMainList());
         param.setSign(true);
-        String certifiedTokenId = chainMakerServiceApi.addAssetsCertified(param)
-                .getData().getTokenId();
+        ApiResult<ChainMakerRtVO> rt = chainMakerServiceApi.addAssetsCertified(param);
+        if (rt == null || rt.getCode() != 200 || rt.getData() == null || rt.getData().getTokenId() == null) {
+            throw new CommonBizException("区块链核证失败");
+        }
+        String certifiedTokenId = rt.getData().getTokenId();
         //更新状态
         carbonAssets.setCertifiedTxId(certifiedTokenId);
         carbonAssets.setStatus(2);
@@ -135,9 +141,12 @@ public class CarbonBlockChainMsgProduce {
      */
     public void assetsBusiness(CarbonAssetsBusiness param) {
         // 交易id
-        String  txId = chainMakerServiceApi
-                .addAssetsBusiness(CarbonAssetsBusiness.buildCarbonBusinessParam(param))
-                .getData().getTxId();
+        ApiResult<ChainMakerRtVO> rt = chainMakerServiceApi
+                .addAssetsBusiness(CarbonAssetsBusiness.buildCarbonBusinessParam(param));
+        if (rt == null || rt.getCode() != 200 || rt.getData() == null || rt.getData().getTxId() == null) {
+            throw new CommonBizException("区块链交易失败");
+        }
+        String txId = rt.getData().getTxId();
         // 操作
         param.setTxId(txId);
         carbonAssetsBusinessService.save(param);
@@ -180,7 +189,7 @@ public class CarbonBlockChainMsgProduce {
      * @param param 参数
      */
     public void addCarbonQuotas(CarbonQuotasAddParam param) {
-        throw new UnsupportedOperationException("addCarbonQuotas 暂未实现");
+        throw new CommonBizException("碳配额上链接口未接入");
     }
     /**
      * 碳减排资产上链
@@ -196,13 +205,13 @@ public class CarbonBlockChainMsgProduce {
      * @param param 参数
      */
     public CarbonAssetsToken queryAssetsTokenList(CarbonAssetsTokenParam param) {
-        return null;
+        throw new CommonBizException("资产 token 查询接口未接入");
     }
     /**
      * 查看机构中和资产token详情
      * @param param 参数
      */
     public CarbonAssetsTokenInfo queryAssetsTokenInfo(CarbonAssetsTokenParam param) {
-        return null;
+        throw new CommonBizException("资产 token 查询接口未接入");
     }
 }

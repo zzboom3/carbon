@@ -12,7 +12,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.carbon.auth.mapper.LoginMapper;
 import com.carbon.auth.service.LoginService;
-import com.carbon.auth.service.SmsService;
+import com.carbon.auth.service.EmailCodeService;
 import com.carbon.common.constants.AccountConstant;
 import com.carbon.common.enums.ExpCodeEnum;
 import com.carbon.common.exception.CommonBizException;
@@ -41,6 +41,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
@@ -51,7 +52,10 @@ import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -61,12 +65,17 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class LoginServiceImpl implements LoginService {
 
+	private static final Set<String> SUPER_ROLE_CODES = new HashSet<>(Arrays.asList("0200000009", "0200000010"));
+
+	@Value("${carbon.security.permitAll:false}")
+	private boolean permitAll;
+
 	@Resource
 	private LoginMapper loginMapper;
 	@Autowired
 	private RedisService redisService;
 	@Autowired
-	private SmsService smsService;
+	private EmailCodeService emailCodeService;
 	@Autowired
 	private SystemServiceApi systemServiceApi;
 	@Resource
@@ -75,9 +84,9 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public LoginInfoVo byLoginName(LoginParam loginParam) {
 
-		log.info("loginParam = " + loginParam);
 		String accountName = StrUtil.trimToEmpty(loginParam.getAccountName());
 		String password = loginParam.getPassword();
+		log.info("login accountName={}", accountName);
 
 		SysAccount account = loginMapper.selectOne(Wrappers.lambdaQuery(SysAccount.class).eq(SysAccount::getAccountName, accountName));
 		if (account == null) {
@@ -118,10 +127,12 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public void register(RegisterParam param) {
+		emailCodeService.checkAndConsumeRegisterCode(param.getEmail(), param.getCode());
 		SysAccountParam accountParam = new SysAccountParam();
 		accountParam.setAccountName(param.getAccountName());
 		accountParam.setPassword(param.getPassword());
 		accountParam.setPhone(param.getPhone());
+		accountParam.setEmail(param.getEmail());
 		accountParam.setAccountStatus(AccountConstant.ACCOUNT_STATUS_NO_OPENED);
 		accountParam.setAccountType("0380000001");//试用账户
 		accountParam.setProductVersion("0400000001");//试用版
@@ -159,10 +170,8 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public void forgotPassword(ForgotPasswordParam param) {
-		//校验短信验证码
-		smsService.checkValidateCode(param.getPhone(),param.getCode(),RedisKeyName.SMS_FORGOT_PASSWORD_KEY);
-		//根据手机号查询用户
-		SysAccount account = loginMapper.selectOne(Wrappers.lambdaQuery(SysAccount.class).eq(SysAccount::getPhone, param.getPhone()));
+		emailCodeService.checkAndConsumeForgotPasswordCode(param.getEmail(), param.getCode());
+		SysAccount account = loginMapper.selectOne(Wrappers.lambdaQuery(SysAccount.class).eq(SysAccount::getEmail, param.getEmail()));
 		if (account == null) {
 			throw new CommonBizException(ExpCodeEnum.SYSTEM_SECURITY_USER_NULL);
 		}
@@ -204,15 +213,28 @@ public class LoginServiceImpl implements LoginService {
 		if (loginInfo == null){
 			return ApiResult.fail(ApiCode.UNAUTHORIZED);
 		}
+		if (permitAll) {
+			return ApiResult.ok();
+		}
 		if (StrUtil.isBlank(checkUrl)) {
 			return ApiResult.ok();
 		}
 		SecurityData securityData = loginInfo.getSecurityData();
 		if (securityData == null) {
+			return ApiResult.fail(ApiCode.UNAUTHORIZED);
+		}
+
+		if (securityData.getAccountName() != null && "admin".equalsIgnoreCase(securityData.getAccountName())) {
 			return ApiResult.ok();
 		}
 
 		if (CollUtil.isNotEmpty(securityData.getRoleCodes())) {
+			boolean isSuperRole = securityData.getRoleCodes().stream()
+					.filter(StrUtil::isNotBlank)
+					.anyMatch(SUPER_ROLE_CODES::contains);
+			if (isSuperRole) {
+				return ApiResult.ok();
+			}
 			boolean isAdmin = securityData.getRoleCodes().stream()
 					.filter(StrUtil::isNotBlank)
 					.anyMatch(r -> "admin".equalsIgnoreCase(r));
@@ -238,14 +260,14 @@ public class LoginServiceImpl implements LoginService {
 
 		List<String> permissionCodes = securityData.getPermissionCodes();
 		if (CollUtil.isEmpty(permissionCodes) || permissionCodes.stream().noneMatch(StrUtil::isNotBlank)) {
-			return ApiResult.ok();
+			return ApiResult.fail(ApiCode.NOT_PERMISSION);
 		}
 
 		boolean matched = permissionCodes.stream()
 				.filter(StrUtil::isNotBlank)
 				.map(p -> p.startsWith("/") ? p : ("/" + p))
 				.anyMatch(p -> checkUrl.startsWith(p) || normalizedUrlFinal.startsWith(p));
-		return matched ? ApiResult.ok() : ApiResult.fail(ApiCode.UNAUTHORIZED);
+		return matched ? ApiResult.ok() : ApiResult.fail(ApiCode.NOT_PERMISSION);
 		
 	}
 
@@ -255,8 +277,16 @@ public class LoginServiceImpl implements LoginService {
 		if (data == null){
 			return null;
 		}
-		data.setRoleCodes(Arrays.asList(data.getRoleCodeStr().split(",")));
-		data.setPermissionCodes(Arrays.asList(data.getPermissionCodesStr().split(",")));
+		if (StrUtil.isBlank(data.getRoleCodeStr())) {
+			data.setRoleCodes(new ArrayList<>());
+		} else {
+			data.setRoleCodes(Arrays.asList(data.getRoleCodeStr().split(",")));
+		}
+		if (StrUtil.isBlank(data.getPermissionCodesStr())) {
+			data.setPermissionCodes(new ArrayList<>());
+		} else {
+			data.setPermissionCodes(Arrays.asList(data.getPermissionCodesStr().split(",")));
+		}
 		return data;
 	}
 

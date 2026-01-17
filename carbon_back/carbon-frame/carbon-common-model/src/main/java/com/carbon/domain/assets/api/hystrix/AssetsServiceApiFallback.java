@@ -19,7 +19,7 @@ public class AssetsServiceApiFallback implements FallbackFactory<AssetsServiceAp
 	@Override
 	public AssetsServiceApi create(Throwable arg0) {
 
-		ApiResult result = ApiResult.fail("系统服务不可用");
+		ApiResult result = ApiResult.fail("资产服务不可用");
 
 		return new AssetsServiceApi() {
 
@@ -40,7 +40,7 @@ public class AssetsServiceApiFallback implements FallbackFactory<AssetsServiceAp
 
 			@Override
 			public ApiResult uploadContent(MethodologyUploadParam param) {
-				return null;
+				return result;
 			}
 
 

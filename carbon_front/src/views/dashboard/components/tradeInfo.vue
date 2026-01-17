@@ -103,17 +103,25 @@ export default {
       quotation: {},
       activeName: "VCS",
       xunjianChart: null,
-      lvxinChart: null
+      lvxinChart: null,
+      quotationRefreshTimer: null
     }
   },
   mounted() {
     this.cacultePercent("VCS")
     window.addEventListener('resize', this.resizeCharts)
+    this.quotationRefreshTimer = setInterval(() => {
+      this.cacultePercent(this.activeName)
+    }, 60000)
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resizeCharts)
     if (this.xunjianChart) this.xunjianChart.dispose()
     if (this.lvxinChart) this.lvxinChart.dispose()
+    if (this.quotationRefreshTimer) {
+      clearInterval(this.quotationRefreshTimer)
+      this.quotationRefreshTimer = null
+    }
   },
   methods: {
     resizeCharts() {
@@ -144,11 +152,15 @@ export default {
         this.filingCount = quotation.filingCount
         this.approvedCount = quotation.approvedCount
 
-        this.percentStockCount = parseFloat(this.stockCount / this.ccerCount * 100).toFixed(2)
-        this.percentWrittenOffCount = parseFloat(this.writtenOffCount / this.ccerCount * 100).toFixed(2)
-        this.percentSingCount = parseFloat(this.singCount / this.ccerProjectCount * 100).toFixed(2)
-        this.percentFilingCount = parseFloat(this.filingCount / this.ccerProjectCount * 100).toFixed(2)
-        this.percentApprovedCount = parseFloat(this.approvedCount / this.ccerProjectCount * 100).toFixed(2)
+        const safePercent = (num, den) => {
+          if (!den || den === 0) return '0.00'
+          return parseFloat(num / den * 100).toFixed(2)
+        }
+        this.percentStockCount = safePercent(this.stockCount, this.ccerCount)
+        this.percentWrittenOffCount = safePercent(this.writtenOffCount, this.ccerCount)
+        this.percentSingCount = safePercent(this.singCount, this.ccerProjectCount)
+        this.percentFilingCount = safePercent(this.filingCount, this.ccerProjectCount)
+        this.percentApprovedCount = safePercent(this.approvedCount, this.ccerProjectCount)
         
         this.$nextTick(() => {
           this.drawRing()

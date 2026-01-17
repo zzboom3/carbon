@@ -463,8 +463,26 @@ export function getProductVerssionDict(store) {
 }
 function getDircByCode(store, key) {
    if (Object.keys(dircs).length == 0) {
-      let res = JSON.parse(localStorage.getItem('dircs'));
-      res.map(e => {
+      let res
+      try {
+         res = JSON.parse(localStorage.getItem('dircs'))
+      } catch (e) {
+         res = null
+      }
+
+      if (!Array.isArray(res) || res.length === 0) {
+         getAllDict().then(r => {
+            try {
+               localStorage.setItem('dircs', JSON.stringify(r || []))
+            } catch (e) {
+            }
+         }).catch(err => {
+         })
+         return []
+      }
+
+      res.forEach(e => {
+         if (!e || !e.dictCode) return
          let data = dircs[e.dictCode]
          if (!data) {
             data = new Array()
@@ -481,5 +499,5 @@ function getDircByCode(store, key) {
    if (dircs) {
       return dircs[key]
    }
-   return ""
+   return []
 }

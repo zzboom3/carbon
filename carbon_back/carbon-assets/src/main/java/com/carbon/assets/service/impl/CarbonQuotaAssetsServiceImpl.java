@@ -1,29 +1,18 @@
 package com.carbon.assets.service.impl;
 
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.carbon.assets.entity.CarbonQuotaAssets;
 import com.carbon.assets.mapper.CarbonQuotaAssetsMapper;
 import com.carbon.assets.service.CarbonQuotaAssetsService;
-import com.carbon.assets.param.CarbonQuotaAssetsQueryParam;
 import com.carbon.assets.vo.CarbonAssetsTotalVo;
-import com.carbon.assets.vo.CarbonQuotaAssetsQueryVo;
 import com.carbon.common.service.BaseServiceImpl;
-import com.carbon.common.api.Paging;
-import com.carbon.domain.auth.vo.SecurityData;
-import com.carbon.domain.common.constant.RocketDelayLevelConstant;
-import com.carbon.domain.common.constant.RocketMqName;
-import com.carbon.domain.mq.entity.AssetUploadApproval;
-import com.carbon.domain.mq.entity.QuotaApproval;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import javax.annotation.Resource;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import java.io.Serializable;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -39,4 +28,33 @@ import java.io.Serializable;
 @Transactional(rollbackFor = Exception.class)
 public class CarbonQuotaAssetsServiceImpl extends BaseServiceImpl<CarbonQuotaAssetsMapper, CarbonQuotaAssets> implements CarbonQuotaAssetsService {
 
+    @Override
+    public CarbonAssetsTotalVo getAssetsTotal() {
+        List<CarbonQuotaAssets> list = this.list(
+                Wrappers.lambdaQuery(CarbonQuotaAssets.class)
+                        .select(
+                                CarbonQuotaAssets::getTotal,
+                                CarbonQuotaAssets::getAvailableAmount,
+                                CarbonQuotaAssets::getFrozenAmount,
+                                CarbonQuotaAssets::getLockedAmount
+                        )
+        );
+
+        CarbonAssetsTotalVo vo = new CarbonAssetsTotalVo();
+        vo.setTotal(sum(list, CarbonQuotaAssets::getTotal));
+        vo.setAvailableAmount(sum(list, CarbonQuotaAssets::getAvailableAmount));
+        vo.setFrozenAmount(sum(list, CarbonQuotaAssets::getFrozenAmount));
+        vo.setLockedAmount(sum(list, CarbonQuotaAssets::getLockedAmount));
+        return vo;
+    }
+
+    private BigDecimal sum(List<CarbonQuotaAssets> list, java.util.function.Function<CarbonQuotaAssets, BigDecimal> getter) {
+        if (list == null || list.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+        return list.stream()
+                .map(getter)
+                .filter(Objects::nonNull)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }

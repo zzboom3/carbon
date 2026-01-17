@@ -133,14 +133,12 @@ public class MyZuulFilter extends ZuulFilter {
         ApiResult<Boolean> permissionCheck = loginCheckApi.checkPermission(request.getRequestURI());
         log.info("permissionCheck: {}", JSONUtil.toJsonStr(permissionCheck));
         if (permissionCheck == null) {
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(HttpStatus.OK.value());
+            HttpContextUtils.printJSON(ctx.getResponse(), ApiResult.fail(ApiCode.FAIL));
             return null;
         }
         if(permissionCheck.getCode() != ApiCode.SUCCESS.getCode()){
-            if (permissionCheck.getCode() == ApiCode.FAIL.getCode()
-                    && permissionCheck.getMsg() != null
-                    && permissionCheck.getMsg().contains("授权服务不可用")) {
-                return null;
-            }
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(HttpStatus.OK.value());
             HttpContextUtils.printJSON(ctx.getResponse(),permissionCheck);

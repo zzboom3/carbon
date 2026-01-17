@@ -1,0 +1,641 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.2.RELEASE)
+
+2026-01-18 02:19:26.766  INFO 40480 --- [           main] com.carbon.trade.TradeApplication        : The following profiles are active: dev
+2026-01-18 02:19:29.551  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:29.558  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:30.010  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 439ms. Found 2 Elasticsearch repository interfaces.
+2026-01-18 02:19:30.021  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:30.024  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:30.052  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-01-18 02:19:30.072  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:30.074  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-18 02:19:30.108  INFO 40480 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.carbon.trade.repository.EsCarbonTradeQuoteRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2026-01-18 02:19:30.111  INFO 40480 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.carbon.trade.repository.MethodologyRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2026-01-18 02:19:30.111  INFO 40480 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 0 Redis repository interfaces.
+2026-01-18 02:19:30.250  WARN 40480 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2026-01-18 02:19:30.729  INFO 40480 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=383af294-1b0c-31a3-81da-d14eccad9950
+2026-01-18 02:19:30.783  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.assets.api.AssetsServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.787  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.auth.api.LoginCheckApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.792  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.chainmaker.api.ChainMakerServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.797  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.BmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.800  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.CmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:30.804  INFO 40480 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.system.api.SystemServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:32.712  INFO 40480 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9005 (http)
+2026-01-18 02:19:32.746  INFO 40480 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18 02:19:32.749  INFO 40480 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2026-01-18 02:19:33.531  INFO 40480 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/trade]  : Initializing Spring embedded WebApplicationContext
+2026-01-18 02:19:33.533  INFO 40480 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6708 ms
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+2026-01-18 02:19:36.476  INFO 40480 --- [           main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2026-01-18 02:19:38.308  INFO 40480 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+Registered plugin: 'com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor@7d3bcd3'
+Parsed mapper file: 'file [D:\desktop\Carbon_manage_system\carbon_official\carbon_back\carbon-trade\target\classes\mapper\trade\CarbonTradeContractMapper.xml]'
+Parsed mapper file: 'file [D:\desktop\Carbon_manage_system\carbon_official\carbon_back\carbon-trade\target\classes\mapper\trade\CarbonTradePriceMapper.xml]'
+Parsed mapper file: 'file [D:\desktop\Carbon_manage_system\carbon_official\carbon_back\carbon-trade\target\classes\mapper\trade\CarbonTradeQuoteMapper.xml]'
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.0 
+2026-01-18 02:19:46.007  WARN 40480 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.geo.Point to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:46.010  WARN 40480 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.geo.Point as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:46.011  WARN 40480 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.elasticsearch.core.geo.GeoPoint to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:46.013  WARN 40480 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.elasticsearch.core.geo.GeoPoint as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:47.445  INFO 40480 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Spring Data Elasticsearch: 4.0.2.RELEASE
+2026-01-18 02:19:47.453  INFO 40480 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client in build: 7.6.2
+2026-01-18 02:19:47.455  INFO 40480 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client used: 7.6.2
+2026-01-18 02:19:48.984  WARN 40480 --- [           main] .d.e.r.s.AbstractElasticsearchRepository : Cannot create index: Timeout connecting to [/192.168.100.128:9200]; nested exception is java.lang.RuntimeException: Timeout connecting to [/192.168.100.128:9200]
+2026-01-18 02:19:54.678  INFO 40480 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-01-18 02:19:54.940  INFO 40480 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2026-01-18 02:19:55.071  WARN 40480 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:55.080  INFO 40480 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:55.094  WARN 40480 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:55.095  INFO 40480 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:55.514  INFO 40480 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:19:55.921  INFO 40480 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2026-01-18 02:19:58.983  WARN 40480 --- [           main] .d.e.r.s.AbstractElasticsearchRepository : Cannot create index: Timeout connecting to [/192.168.100.128:9200]; nested exception is java.lang.RuntimeException: Timeout connecting to [/192.168.100.128:9200]
+2026-01-18 02:20:01.171  INFO 40480 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9005 (http) with context path '/trade'
+2026-01-18 02:20:01.198  INFO 40480 --- [           main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP carbon-trade 192.168.100.1:9005 register finished
+2026-01-18 02:20:01.462  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:01.519  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:02.724  INFO 40480 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2026-01-18 02:20:02.730  INFO 40480 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2026-01-18 02:20:02.812  INFO 40480 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2026-01-18 02:20:03.273  INFO 40480 --- [           main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getPageListUsingPOST_1
+2026-01-18 02:20:03.456  INFO 40480 --- [           main] com.carbon.trade.TradeApplication        : Started TradeApplication in 43.382 seconds (JVM running for 46.551)
+2026-01-18 02:20:31.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:31.505  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:21:01.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:21:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:21:31.214  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:21:31.517  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:22:01.217  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:22:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:22:03.317  INFO 40480 --- [nio-9005-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/trade]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-18 02:22:03.319  INFO 40480 --- [nio-9005-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-18 02:22:03.394  INFO 40480 --- [nio-9005-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 75 ms
+2026-01-18 02:22:31.222  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:22:31.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:23:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:23:01.527  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:23:31.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:23:31.511  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:24:01.220  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:24:01.517  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:24:31.223  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:24:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:25:01.229  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:25:01.520  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:25:31.227  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:25:31.524  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:26:01.220  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:26:01.517  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:26:31.230  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:26:31.532  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:27:01.225  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:27:01.520  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:27:31.211  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:27:31.510  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:28:01.221  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:28:01.513  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:28:31.218  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:28:31.525  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:29:01.220  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:29:01.531  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:29:31.210  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:29:31.519  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:30:01.209  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:30:01.522  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:30:31.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:30:31.527  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:31:01.229  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:31:01.521  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:31:31.233  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:31:31.525  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:32:01.218  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:32:01.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:32:31.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:32:31.505  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:33:01.212  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:33:01.518  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:33:31.221  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:33:31.512  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:34:01.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:34:01.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:34:31.229  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:34:31.522  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:35:01.226  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:35:01.521  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:35:31.234  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:35:31.528  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:36:01.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:36:01.523  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:36:31.224  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:36:31.521  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+Creating a new SqlSession
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3207d8ad] was not registered for synchronization because synchronization is not active
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fc12c6b] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000001(String)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+<==    Columns: COUNT(1)
+<==        Row: 4
+<==        Row: 23
+<==      Total: 1
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000002(String), 10(Long)
+==> Parameters: 0270000001(String), 10(Long)
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+<==        Row: 397, 0270000001, 上海诺栖科技, admin, 021-45345323, 1197, 0030100000, 能源工业, 0040100001, 0140000001, 9166666.00, tCO2e, 16.00, 0160000001, 2022-09-17 00:00:00, 0190000002, 0170150001, 2022-09-18 00:00:00, 1, 0, , 1, 2022-09-16 14:17:33, null, 2022-09-16 14:17:33
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 393, 0270000001, 不知道什么机构, 不二, 13737122425, 123, 0030100000, 能源工业, 0040100002, 0140000001, 123.00, tCO2e, 123.00, 0160000002, 2022-09-14 00:00:00, 0190000002, 0170150002, 2022-09-15 00:00:00, 0, 0, , 80, 2022-09-13 17:05:59, 1, 2022-09-13 17:05:59
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 392, 0270000001, 上海诺栖科技, admin, 021-45345323, , 0030100000, 能源工业, 0040100003, 0140000001, 91333.00, tCO2e, null, 0160000002, null, , , null, 1, 0, , 1, 2022-09-13 10:35:15, 80, 2022-09-13 10:35:15
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 271, 0270000001, 上海诺栖科技, admin, 021-45345323, 789, 0030100000, null, 0040100001, 0140000001, 8255.00, tCO2e, 85.00, 0160000001, 2022-08-17 00:00:00, 0190000001, 0170150101, 2022-08-16 00:00:00, 1, 0, , 1, 2022-08-25 14:47:06, null, 2022-08-25 14:47:06
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==      Total: 4
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4fc12c6b]
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3207d8ad]
+2026-01-18 02:37:01.226  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:37:01.518  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33580e23] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,project_scope_code,project_scope,trade_quote_id,buyer_id,buyer_trade_quantity,buyer_unit_price,buyer_delivery_method,buyer_delivery_exchange,buyer_delivery_time,seller_id,seller_trade_quantity,seller_unit_price,seller_delivery_method,seller_delivery_exchange,seller_delivery_time,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_price 
+ 
+  
+ 
+  ORDER BY id DESC
+parser sql: SELECT id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time FROM carbon_trade_price ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_price
+==> Parameters: 
+<==    Columns: COUNT(1)
+<==        Row: 51
+<==      Total: 1
+==>  Preparing: SELECT id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time FROM carbon_trade_price ORDER BY id DESC LIMIT ?
+==> Parameters: 10(Long)
+<==    Columns: id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time
+<==        Row: 71, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 22:02:36, null, 2022-09-14 22:02:36
+<==        Row: 70, -, null, 395, 0, 9144.00, 10.00, -, -, null, 1, 9144.00, null, , , null, 80, 2022-09-14 15:59:44, null, 2022-09-14 15:59:44
+<==        Row: 69, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 15:58:48, null, 2022-09-14 15:58:48
+<==        Row: 68, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 15:58:31, null, 2022-09-14 15:58:31
+<==        Row: 67, 0, null, 391, 0, 13.00, 91.00, 0, 0, null, 1, 13.00, 91.00, 0190000000, 0170000000, null, 80, 2022-09-13 17:00:43, null, 2022-09-13 17:00:43
+<==        Row: 66, 0, null, 391, 0, 13.00, 91.00, 0190000001, 0170150002, 2022-09-13 00:00:00, 1, 13.00, 91.00, 0190000000, 0170000000, null, 80, 2022-09-13 17:00:32, null, 2022-09-13 17:00:32
+<==        Row: 65, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 78.00, -, -, null, 80, 2022-09-13 16:51:34, null, 2022-09-13 16:51:34
+<==        Row: 64, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 10.00, -, -, null, 80, 2022-09-13 16:50:32, null, 2022-09-13 16:50:32
+<==        Row: 63, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 10.00, 0190000001, 0170150001, null, 80, 2022-09-13 16:50:20, null, 2022-09-13 16:50:20
+<==        Row: 62, null, null, 196, 6, 10.00, 88.00, 0, 0, null, 1, 10.00, null, 0190000000, 0170000000, null, 52, 2022-07-21 21:39:28, null, 2022-07-21 21:39:28
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@33580e23]
+2026-01-18 02:37:31.220  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:37:31.520  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:38:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:38:01.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:38:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:38:31.512  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:39:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:39:01.509  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:39:31.214  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:39:31.510  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:40:01.227  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:40:01.522  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:40:31.211  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:40:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:41:01.210  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:41:01.524  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:41:31.221  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:41:31.527  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:42:01.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:42:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:42:31.210  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:42:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:43:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:43:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:43:31.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:43:31.521  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:44:01.222  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:44:01.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:44:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:44:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:45:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:45:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:45:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:45:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:46:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:46:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:46:31.204  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:46:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:47:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:47:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:47:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:47:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:48:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:48:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:48:31.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:48:31.511  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:49:01.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:49:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:49:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:49:31.513  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:50:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:50:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:50:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:50:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:51:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:51:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:51:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:51:31.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:52:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:52:01.517  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:52:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:52:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:53:01.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:53:01.506  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:53:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:53:31.505  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:54:01.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:54:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:54:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:54:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:55:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:55:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:55:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:55:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:56:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:56:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:56:31.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:56:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:57:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:57:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:57:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:57:31.511  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:58:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:58:01.511  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:58:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:58:31.520  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:59:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:59:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:59:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:59:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:00:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:00:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:00:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:00:31.507  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:01:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:01:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:01:31.204  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:01:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:02:01.208  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:02:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:02:31.224  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:02:31.511  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:03:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:03:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:03:31.219  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:03:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:04:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:04:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:04:31.204  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:04:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:05:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:05:01.507  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:05:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:05:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:06:01.204  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:06:01.507  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:06:31.208  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:06:31.506  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:07:01.218  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:07:01.523  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:07:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:07:31.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:08:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:08:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:08:31.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:08:31.505  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:09:01.207  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:09:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:09:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:09:31.512  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:10:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:10:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:10:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:10:31.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:11:01.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:11:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:11:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:11:31.524  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:12:01.217  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:12:01.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:12:31.204  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:12:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:13:01.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:13:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:13:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:13:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:14:01.210  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:14:01.514  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:14:31.208  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:14:31.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:15:01.217  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:15:01.513  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:15:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:15:31.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:16:01.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:16:01.502  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:16:31.206  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:16:31.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:17:01.219  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:17:01.504  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:17:31.205  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:17:31.503  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:18:01.216  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:18:01.510  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:18:31.219  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:18:31.529  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+Creating a new SqlSession
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@726c6d38] was not registered for synchronization because synchronization is not active
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35cc0847] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000001(String)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+<==    Columns: COUNT(1)
+<==        Row: 4
+<==        Row: 23
+<==      Total: 1
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000001(String), 10(Long)
+==> Parameters: 0270000002(String), 10(Long)
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+<==        Row: 397, 0270000001, 上海诺栖科技, admin, 021-45345323, 1197, 0030100000, 能源工业, 0040100001, 0140000001, 9166666.00, tCO2e, 16.00, 0160000001, 2022-09-17 00:00:00, 0190000002, 0170150001, 2022-09-18 00:00:00, 1, 0, , 1, 2022-09-16 14:17:33, null, 2022-09-16 14:17:33
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 393, 0270000001, 不知道什么机构, 不二, 13737122425, 123, 0030100000, 能源工业, 0040100002, 0140000001, 123.00, tCO2e, 123.00, 0160000002, 2022-09-14 00:00:00, 0190000002, 0170150002, 2022-09-15 00:00:00, 0, 0, , 80, 2022-09-13 17:05:59, 1, 2022-09-13 17:05:59
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 392, 0270000001, 上海诺栖科技, admin, 021-45345323, , 0030100000, 能源工业, 0040100003, 0140000001, 91333.00, tCO2e, null, 0160000002, null, , , null, 1, 0, , 1, 2022-09-13 10:35:15, 80, 2022-09-13 10:35:15
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 271, 0270000001, 上海诺栖科技, admin, 021-45345323, 789, 0030100000, null, 0040100001, 0140000001, 8255.00, tCO2e, 85.00, 0160000001, 2022-08-17 00:00:00, 0190000001, 0170150101, 2022-08-16 00:00:00, 1, 0, , 1, 2022-08-25 14:47:06, null, 2022-08-25 14:47:06
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==      Total: 4
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@726c6d38]
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35cc0847]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5fe2519a] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,project_scope_code,project_scope,trade_quote_id,buyer_id,buyer_trade_quantity,buyer_unit_price,buyer_delivery_method,buyer_delivery_exchange,buyer_delivery_time,seller_id,seller_trade_quantity,seller_unit_price,seller_delivery_method,seller_delivery_exchange,seller_delivery_time,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_price 
+ 
+  
+ 
+  ORDER BY id DESC
+parser sql: SELECT id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time FROM carbon_trade_price ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_price
+==> Parameters: 
+<==    Columns: COUNT(1)
+<==        Row: 51
+<==      Total: 1
+==>  Preparing: SELECT id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time FROM carbon_trade_price ORDER BY id DESC LIMIT ?
+==> Parameters: 10(Long)
+<==    Columns: id, project_scope_code, project_scope, trade_quote_id, buyer_id, buyer_trade_quantity, buyer_unit_price, buyer_delivery_method, buyer_delivery_exchange, buyer_delivery_time, seller_id, seller_trade_quantity, seller_unit_price, seller_delivery_method, seller_delivery_exchange, seller_delivery_time, creator_id, created_time, updated_id, updated_time
+<==        Row: 71, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 22:02:36, null, 2022-09-14 22:02:36
+<==        Row: 70, -, null, 395, 0, 9144.00, 10.00, -, -, null, 1, 9144.00, null, , , null, 80, 2022-09-14 15:59:44, null, 2022-09-14 15:59:44
+<==        Row: 69, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 15:58:48, null, 2022-09-14 15:58:48
+<==        Row: 68, null, null, 393, 0, 123.00, 123.00, 0190000002, 0170150002, 2022-09-15 00:00:00, 1, 123.00, 123.00, 0, 0, null, 1, 2022-09-14 15:58:31, null, 2022-09-14 15:58:31
+<==        Row: 67, 0, null, 391, 0, 13.00, 91.00, 0, 0, null, 1, 13.00, 91.00, 0190000000, 0170000000, null, 80, 2022-09-13 17:00:43, null, 2022-09-13 17:00:43
+<==        Row: 66, 0, null, 391, 0, 13.00, 91.00, 0190000001, 0170150002, 2022-09-13 00:00:00, 1, 13.00, 91.00, 0190000000, 0170000000, null, 80, 2022-09-13 17:00:32, null, 2022-09-13 17:00:32
+<==        Row: 65, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 78.00, -, -, null, 80, 2022-09-13 16:51:34, null, 2022-09-13 16:51:34
+<==        Row: 64, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 10.00, -, -, null, 80, 2022-09-13 16:50:32, null, 2022-09-13 16:50:32
+<==        Row: 63, null, null, 392, 1, 91333.00, null, , , null, 0, 91333.00, 10.00, 0190000001, 0170150001, null, 80, 2022-09-13 16:50:20, null, 2022-09-13 16:50:20
+<==        Row: 62, null, null, 196, 6, 10.00, 88.00, 0, 0, null, 1, 10.00, null, 0190000000, 0170000000, null, 52, 2022-07-21 21:39:28, null, 2022-07-21 21:39:28
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5fe2519a]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5070eeda] was not registered for synchronization because synchronization is not active
+Creating a new SqlSession
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d21b79b] was not registered for synchronization because synchronization is not active
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000001(String)
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+<==        Row: 4
+<==    Columns: COUNT(1)
+<==      Total: 1
+<==        Row: 23
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000001(String), 10(Long)
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 397, 0270000001, 上海诺栖科技, admin, 021-45345323, 1197, 0030100000, 能源工业, 0040100001, 0140000001, 9166666.00, tCO2e, 16.00, 0160000001, 2022-09-17 00:00:00, 0190000002, 0170150001, 2022-09-18 00:00:00, 1, 0, , 1, 2022-09-16 14:17:33, null, 2022-09-16 14:17:33
+<==        Row: 393, 0270000001, 不知道什么机构, 不二, 13737122425, 123, 0030100000, 能源工业, 0040100002, 0140000001, 123.00, tCO2e, 123.00, 0160000002, 2022-09-14 00:00:00, 0190000002, 0170150002, 2022-09-15 00:00:00, 0, 0, , 80, 2022-09-13 17:05:59, 1, 2022-09-13 17:05:59
+==> Parameters: 0270000002(String), 10(Long)
+<==        Row: 392, 0270000001, 上海诺栖科技, admin, 021-45345323, , 0030100000, 能源工业, 0040100003, 0140000001, 91333.00, tCO2e, null, 0160000002, null, , , null, 1, 0, , 1, 2022-09-13 10:35:15, 80, 2022-09-13 10:35:15
+<==        Row: 271, 0270000001, 上海诺栖科技, admin, 021-45345323, 789, 0030100000, null, 0040100001, 0140000001, 8255.00, tCO2e, 85.00, 0160000001, 2022-08-17 00:00:00, 0190000001, 0170150101, 2022-08-16 00:00:00, 1, 0, , 1, 2022-08-25 14:47:06, null, 2022-08-25 14:47:06
+<==      Total: 4
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5070eeda]
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1d21b79b]
+2026-01-18 03:19:01.219  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:19:01.530  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:19:31.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:19:31.525  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+Creating a new SqlSession
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23cf4230] was not registered for synchronization because synchronization is not active
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@490224df] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@287ff660] will not be managed by Spring
+<==        Row: 23
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+<==      Total: 1
+==> Parameters: 0270000001(String)
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000002(String), 10(Long)
+<==    Columns: COUNT(1)
+<==        Row: 4
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+==> Parameters: 0270000001(String), 10(Long)
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 397, 0270000001, 上海诺栖科技, admin, 021-45345323, 1197, 0030100000, 能源工业, 0040100001, 0140000001, 9166666.00, tCO2e, 16.00, 0160000001, 2022-09-17 00:00:00, 0190000002, 0170150001, 2022-09-18 00:00:00, 1, 0, , 1, 2022-09-16 14:17:33, null, 2022-09-16 14:17:33
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==        Row: 393, 0270000001, 不知道什么机构, 不二, 13737122425, 123, 0030100000, 能源工业, 0040100002, 0140000001, 123.00, tCO2e, 123.00, 0160000002, 2022-09-14 00:00:00, 0190000002, 0170150002, 2022-09-15 00:00:00, 0, 0, , 80, 2022-09-13 17:05:59, 1, 2022-09-13 17:05:59
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+<==        Row: 392, 0270000001, 上海诺栖科技, admin, 021-45345323, , 0030100000, 能源工业, 0040100003, 0140000001, 91333.00, tCO2e, null, 0160000002, null, , , null, 1, 0, , 1, 2022-09-13 10:35:15, 80, 2022-09-13 10:35:15
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 271, 0270000001, 上海诺栖科技, admin, 021-45345323, 789, 0030100000, null, 0040100001, 0140000001, 8255.00, tCO2e, 85.00, 0160000001, 2022-08-17 00:00:00, 0190000001, 0170150101, 2022-08-16 00:00:00, 1, 0, , 1, 2022-08-25 14:47:06, null, 2022-08-25 14:47:06
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 4
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@490224df]
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23cf4230]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c858873] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+<==        Row: 23
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000002(String), 10(Long)
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@c858873]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56b47b79] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ? AND (project_name LIKE ? OR institution_name LIKE ?)) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ? AND (project_name LIKE ? OR institution_name LIKE ?)) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ? AND (project_name LIKE ? OR institution_name LIKE ?))
+==> Parameters: 0270000002(String), %你%(String), %你%(String)
+<==    Columns: COUNT(1)
+<==        Row: 0
+<==      Total: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56b47b79]
+2026-01-18 03:20:01.211  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:20:01.509  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d67ee01] was not registered for synchronization because synchronization is not active
+Original SQL: SELECT  id,trade_role,institution_name,contacts_name,contacts_phone,contacts_email,project_scope_code,project_scope,project_type,asset_type,trade_quantity,asset_unit,asset_unit_price,status,expiration_date,delivery_method,delivery_exchange,delivery_time,publisher_id,project_id,project_name,creator_id,created_time,updated_id,updated_time  FROM carbon_trade_quote 
+ 
+ WHERE (trade_role = ?) ORDER BY id DESC
+parser sql: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC
+JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@5df92979] will not be managed by Spring
+==>  Preparing: SELECT COUNT(1) FROM carbon_trade_quote WHERE (trade_role = ?)
+==> Parameters: 0270000002(String)
+<==    Columns: COUNT(1)
+<==        Row: 23
+<==      Total: 1
+==>  Preparing: SELECT id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time FROM carbon_trade_quote WHERE (trade_role = ?) ORDER BY id DESC LIMIT ?
+==> Parameters: 0270000002(String), 10(Long)
+<==    Columns: id, trade_role, institution_name, contacts_name, contacts_phone, contacts_email, project_scope_code, project_scope, project_type, asset_type, trade_quantity, asset_unit, asset_unit_price, status, expiration_date, delivery_method, delivery_exchange, delivery_time, publisher_id, project_id, project_name, creator_id, created_time, updated_id, updated_time
+<==        Row: 410, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000001, 0170150002, null, 1, 6500, , 1, 2022-11-10 03:38:51, null, 2022-11-10 03:38:51
+<==        Row: 409, 0270000002, UPC黄岩风电场工程, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6500, , 1, 2022-11-10 03:28:28, null, 2022-11-10 03:28:28
+<==        Row: 408, 0270000002, 阿拉尔晶科能源有限公司一期20兆瓦光伏并网电站项目, , , , 40600004, 能源工业, 40600004, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000002, 0170150001, 2022-11-09 16:00:00, 1, 6602, , 1, 2022-11-10 03:06:13, null, 2022-11-10 03:06:13
+<==        Row: 407, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:36:46, null, 2022-11-09 09:36:46
+<==        Row: 406, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , 40600004, 能源工业, 0040600004, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:32:51, null, 2022-11-09 09:32:51
+<==        Row: 405, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , null, 0160000001, null, 0190000000, 0170000000, null, 1, 6303, , 1, 2022-11-09 09:26:40, null, 2022-11-09 09:26:40
+<==        Row: 404, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 100.00, 0160000001, 2022-11-29 16:00:00, 0190000001, 0170150002, 2022-11-15 16:00:00, 1, 6303, , 1, 2022-11-09 09:16:58, null, 2022-11-09 09:16:58
+<==        Row: 403, 0270000002, 阿拉尔晶科二期30兆瓦并网光伏电站项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-23 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6303, , 1, 2022-11-09 09:15:47, null, 2022-11-09 09:15:47
+<==        Row: 402, 0270000002, 两岸新能源合作海南航天50兆瓦光伏发电实证性研究金太阳示范项目, , , , null, 能源工业, 0040100001, 0140000001, 100.00, , 50.00, 0160000001, 2022-11-08 16:00:00, 0190000000, 0170000000, 2022-11-08 16:00:00, 1, 6946, , 1, 2022-11-09 07:25:47, null, 2022-11-09 07:25:47
+<==        Row: 401, 0270000002, 北京碳交易平台, , , , null, 能源工业, 0040100001, 0140000002, 100.00, , 50.00, 0160000001, 2022-11-22 16:00:00, 0190000002, 0170150001, 2022-11-08 16:00:00, 1, 0, , 1, 2022-11-09 07:25:10, null, 2022-11-09 07:25:10
+<==      Total: 10
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d67ee01]
+2026-01-18 03:20:31.224  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:20:31.516  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:21:01.219  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:21:01.515  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:21:31.223  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:21:31.520  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:22:01.213  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:22:01.524  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:22:31.215  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 03:22:31.510  INFO 40480 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true

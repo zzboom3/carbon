@@ -17,7 +17,6 @@ import com.carbon.assets.service.CarbonCreditAssetsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import javax.annotation.Resource;
 
 
@@ -41,12 +40,7 @@ public class CarbonCreditAssetsController extends BaseController {
     @GetMapping("/assetsTotal")
     @ApiOperation(value = "碳信用面板数据", notes = "碳信用面板数据")
     public ApiResult<CarbonAssetsTotalVo> assetsTotal() {
-        CarbonAssetsTotalVo vo = new CarbonAssetsTotalVo();
-        vo.setTotal(BigDecimal.ZERO);
-        vo.setAvailableAmount(BigDecimal.ZERO);
-        vo.setFrozenAmount(BigDecimal.ZERO);
-        vo.setLockedAmount(BigDecimal.ZERO);
-        return ApiResult.ok(vo);
+        return ApiResult.ok(carbonCreditAssetsService.getAssetsTotal());
     }
 
     @PostMapping("/getPageList")

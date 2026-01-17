@@ -1,0 +1,104 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.2.RELEASE)
+
+2026-01-18 02:20:12.479  INFO 35980 --- [           main] com.carbon.system.SystemApplication      : The following profiles are active: dev
+2026-01-18 02:20:14.900  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:20:14.907  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:20:15.321  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 404ms. Found 2 Elasticsearch repository interfaces.
+2026-01-18 02:20:15.330  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:20:15.332  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:20:15.373  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-01-18 02:20:15.388  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:20:15.390  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-18 02:20:15.434  INFO 35980 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.carbon.system.repository.CarbonArticleRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2026-01-18 02:20:15.436  INFO 35980 --- [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.carbon.system.repository.H5SearchResultRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2026-01-18 02:20:15.436  INFO 35980 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33ms. Found 0 Redis repository interfaces.
+2026-01-18 02:20:15.554  WARN 35980 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2026-01-18 02:20:15.922  INFO 35980 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9b7b8a7d-0633-3d60-95b1-4e3e9b2cf30e
+2026-01-18 02:20:15.973  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.assets.api.AssetsServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:15.978  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.auth.api.LoginCheckApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:15.983  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.chainmaker.api.ChainMakerServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:15.986  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.BmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:15.989  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.CmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:15.992  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.system.api.SystemServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:16.393  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.datasource.dynamic-com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:16.412  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration' of type [com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$e9abeaeb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:16.653  INFO 35980 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'dsProcessor' of type [com.baomidou.dynamic.datasource.processor.DsHeaderProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:20:17.776  INFO 35980 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9002 (http)
+2026-01-18 02:20:17.804  INFO 35980 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18 02:20:17.805  INFO 35980 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2026-01-18 02:20:18.282  INFO 35980 --- [           main] o.a.c.c.C.[.[localhost].[/system]        : Initializing Spring embedded WebApplicationContext
+2026-01-18 02:20:18.283  INFO 35980 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5765 ms
+2026-01-18 02:20:21.205  INFO 35980 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,carbonDb} inited
+2026-01-18 02:20:21.566  INFO 35980 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2,travelDb} inited
+2026-01-18 02:20:21.566  INFO 35980 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [carbonDb] success
+2026-01-18 02:20:21.568  INFO 35980 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [travelDb] success
+2026-01-18 02:20:21.569  INFO 35980 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [2] datasource,primary datasource named [carbonDb]
+2026-01-18 02:20:22.661  WARN 35980 --- [           main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.carbon.system.entity.CarbonApproval".
+2026-01-18 02:20:23.036  WARN 35980 --- [           main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.carbon.system.entity.CarbonProjectToken".
+2026-01-18 02:20:23.248  WARN 35980 --- [           main] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.carbon.system.entity.FeishuFiletoken".
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.0 
+2026-01-18 02:20:30.021  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:30.280  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:33.541  INFO 35980 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-01-18 02:20:33.815  INFO 35980 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2026-01-18 02:20:33.958  WARN 35980 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:20:33.959  INFO 35980 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:20:33.968  WARN 35980 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:20:33.970  INFO 35980 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:20:34.309  INFO 35980 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:20:35.840  INFO 35980 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2026-01-18 02:20:36.469  WARN 35980 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.geo.Point to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:20:36.469  WARN 35980 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.geo.Point as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:20:36.471  WARN 35980 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.elasticsearch.core.geo.GeoPoint to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:20:36.471  WARN 35980 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.elasticsearch.core.geo.GeoPoint as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:20:36.573 TRACE 35980 --- [           main] o.s.data.elasticsearch.client.WIRE       : [72f112d1] Sending request GET / with parameters: 
+2026-01-18 02:20:36.618  INFO 35980 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Spring Data Elasticsearch: 4.0.2.RELEASE
+2026-01-18 02:20:36.619  INFO 35980 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client in build: 7.6.2
+2026-01-18 02:20:36.619  INFO 35980 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client used: 7.6.2
+2026-01-18 02:20:36.800 TRACE 35980 --- [           main] o.s.data.elasticsearch.client.WIRE       : [2c5dfc9b] Sending request HEAD /es_carbon_h5_search_result?ignore_throttled=false&ignore_unavailable=false&expand_wildcards=open%2Cclosed&allow_no_indices=false with parameters: 
+2026-01-18 02:20:36.801  WARN 35980 --- [           main] .d.e.r.s.AbstractElasticsearchRepository : Cannot create index: Connection refused: no further information; nested exception is java.lang.RuntimeException: Connection refused: no further information
+2026-01-18 02:20:36.848 TRACE 35980 --- [           main] o.s.data.elasticsearch.client.WIRE       : [5abfb698] Sending request HEAD /es_carbon_article?ignore_throttled=false&ignore_unavailable=false&expand_wildcards=open%2Cclosed&allow_no_indices=false with parameters: 
+2026-01-18 02:20:36.850  WARN 35980 --- [           main] .d.e.r.s.AbstractElasticsearchRepository : Cannot create index: Connection refused: no further information; nested exception is java.lang.RuntimeException: Connection refused: no further information
+2026-01-18 02:20:38.713  WARN 35980 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9002 is already in use
+2026-01-18 02:20:42.884  INFO 35980 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:20:45.901  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:45.903  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[192.168.100.128:9876] result: true
+2026-01-18 02:20:48.907  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[172.17.0.4:10911] result: true
+2026-01-18 02:20:48.909  INFO 35980 --- [lientSelector_1] RocketmqRemoting                         : closeChannel: close the connection to remote address[192.168.100.128:9876] result: true
+2026-01-18 02:20:48.932  INFO 35980 --- [           main] c.a.alicloud.oss.OssApplicationListener  : 0 OSSClients will be shutdown soon
+2026-01-18 02:20:48.934  INFO 35980 --- [           main] c.a.alicloud.oss.OssApplicationListener  : 0 OSSClients will be shutdown soon
+2026-01-18 02:20:48.937  INFO 35980 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2026-01-18 02:20:48.950  INFO 35980 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2026-01-18 02:20:48.956  INFO 35980 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2026-01-18 02:20:48.956  INFO 35980 --- [           main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2026-01-18 02:20:48.959  INFO 35980 --- [           main] .c.NacosValueAnnotationBeanPostProcessor : class com.alibaba.nacos.spring.context.annotation.config.NacosValueAnnotationBeanPostProcessor was destroying!
+2026-01-18 02:20:48.961  INFO 35980 --- [           main] AnnotationNacosInjectedBeanPostProcessor : class com.alibaba.nacos.spring.beans.factory.annotation.AnnotationNacosInjectedBeanPostProcessor was destroying!
+2026-01-18 02:20:48.964  INFO 35980 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-18 02:20:49.018  INFO 35980 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2026-01-18 02:20:49.019  INFO 35980 --- [           main] c.a.alicloud.oss.OssApplicationListener  : 0 OSSClients will be shutdown soon
+2026-01-18 02:20:49.023 ERROR 35980 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9002 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9002 or configure this application to listen on another port.
+

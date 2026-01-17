@@ -71,7 +71,7 @@ public class SystemServiceApiFallback implements FallbackFactory<SystemServiceAp
 
 			@Override
 			public ApiResult pushArticle(JSONObject jsonObject) {
-				return null;
+				return result;
 			}
 		};
 	}

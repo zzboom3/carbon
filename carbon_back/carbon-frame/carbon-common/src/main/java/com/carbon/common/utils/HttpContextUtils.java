@@ -69,7 +69,24 @@ public class HttpContextUtils {
         if (request == null){
             return null;
         }
-        return getHttpServletRequest().getHeader(CommonConstant.TOKEN);
+        String token = request.getHeader(CommonConstant.TOKEN);
+        if (token == null || token.trim().isEmpty()) {
+            token = request.getHeader("Authorization");
+        }
+        if (token == null || token.trim().isEmpty()) {
+            token = request.getHeader("authorization");
+        }
+        if (token == null || token.trim().isEmpty()) {
+            token = request.getParameter(CommonConstant.TOKEN);
+        }
+        if (token == null) {
+            return null;
+        }
+        String normalized = token.trim();
+        if (normalized.regionMatches(true, 0, "Bearer ", 0, 7)) {
+            normalized = normalized.substring(7).trim();
+        }
+        return normalized.isEmpty() ? null : normalized;
     }
 
     /**

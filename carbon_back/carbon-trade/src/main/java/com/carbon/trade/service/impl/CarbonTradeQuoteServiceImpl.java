@@ -74,7 +74,7 @@ public class CarbonTradeQuoteServiceImpl extends BaseServiceImpl<CarbonTradeQuot
                 new Page<>(query.getCurrent(), query.getSize()),
                 Wrappers.lambdaQuery(CarbonTradeQuote.class)
                         .eq(StringUtils.hasText(query.getProjectScopeCode()), CarbonTradeQuote::getProjectScopeCode, query.getProjectScopeCode())
-                        .eq(StringUtils.hasText(query.getTradeStatus()), CarbonTradeQuote::getStatus, query.getTradeStatus())
+                        .eq(StringUtils.hasText(query.getStatus()), CarbonTradeQuote::getStatus, query.getStatus())
                         .and(StringUtils.hasText(query.getKeyword()), w -> w
                                 .like(CarbonTradeQuote::getProjectName, query.getKeyword())
                                 .or().like(CarbonTradeQuote::getInstitutionName, query.getKeyword())

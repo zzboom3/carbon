@@ -32,6 +32,7 @@
         <spring.cloud.alibaba-version>2.2.5.RELEASE</spring.cloud.alibaba-version>
         <rocketmq.version>2.1.0</rocketmq.version>
         <lombok.version>1.18.12</lombok.version>
+        <docker.skip>false</docker.skip>
     </properties>
 
     <dependencyManagement>
@@ -135,6 +136,7 @@
                     </executions>
 
                     <configuration>
+                        <skipDocker>${docker.skip}</skipDocker>
                         <!--镜像名称-->
                         <imageName>${project.artifactId}:1.0.0</imageName>
                         <!--基础镜像jdk1.8-->

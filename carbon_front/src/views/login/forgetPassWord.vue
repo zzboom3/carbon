@@ -18,14 +18,12 @@
 
       <div v-if="!nextShow">
         <el-form :model="regForm" ref="regForm" :rules="loginRules" class="nature-form">
-          <!-- 手机号 -->
-          <el-form-item prop="mobile">
+          <el-form-item prop="email">
             <div class="input-group">
-              <i class="el-icon-mobile-phone input-icon"></i>
+              <i class="el-icon-message input-icon"></i>
               <el-input 
-                v-model="regForm.mobile" 
-                placeholder="请输入11位手机号" 
-                maxlength="11"
+                v-model="regForm.email" 
+                placeholder="请输入邮箱" 
                 class="nature-input">
               </el-input>
             </div>
@@ -38,7 +36,7 @@
                 <i class="el-icon-message input-icon"></i>
                 <el-input 
                   v-model="regForm.verificationCode" 
-                  placeholder="验证码" 
+                  placeholder="邮箱验证码" 
                   class="nature-input">
                 </el-input>
               </div>
@@ -46,7 +44,7 @@
                 class="code-btn" 
                 :disabled="!sendAuthCode" 
                 @click.prevent="handlecode">
-                {{ sendAuthCode ? '获取验证码' : `${auth_time}s` }}
+                {{ sendAuthCode ? '获取邮箱验证码' : `${auth_time}s` }}
               </button>
             </div>
           </el-form-item>
@@ -116,14 +114,17 @@ export default {
   data() {
     return {
       regForm: {
-        mobile: '',
+        email: '',
         verificationCode: '',
         password: '',
         confirmPassword: ''
       },
       loginRules: {
-        mobile: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
-        verificationCode: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
+        email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }],
+        verificationCode: [
+          { required: true, message: '请输入邮箱验证码', trigger: 'blur' },
+          { pattern: /^\d{6}$/, message: '验证码为6位数字', trigger: 'blur' }
+        ],
         password: [{ required: true, message: '请输入新密码', trigger: 'blur' }],
         confirmPassword: [{ required: true, message: '请确认新密码', trigger: 'blur' }]
       },
@@ -155,23 +156,16 @@ export default {
         }
       }, 1000)
     },
-    verifyPhoneNumberFormat(str) {
-      const myreg = /^(((1[0-9][0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-      return myreg.test(str);
-    },
     handlecode() {
-      if (this.regForm.mobile) {
-        if (!this.verifyPhoneNumberFormat(this.regForm.mobile)) {
-          return this.$message.error('手机格式错误！')
-        }
+      if (this.regForm.email) {
         this.getAuthCode()
-        regForgotPasswordCode(this.regForm.mobile).then((res) => {
+        regForgotPasswordCode(this.regForm.email).then((res) => {
            this.$message.success(res.msg || '验证码已发送')
         }).catch(err => {
           this.$message.error(err.msg || '发送失败')
         })
       } else {
-        this.$message.error('请输入手机号')
+        this.$message.error('请输入邮箱')
       }
     },
     handleNext() {
@@ -186,7 +180,7 @@ export default {
             "confirmPassword": this.regForm.confirmPassword,
             "code": this.regForm.verificationCode,
             "password": this.regForm.password,
-            "phone": this.regForm.mobile
+            "email": this.regForm.email
           }
           
           this.loading = true

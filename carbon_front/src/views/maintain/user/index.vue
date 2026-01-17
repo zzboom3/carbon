@@ -321,6 +321,9 @@
 
     <!-- 修改手机号 -->
     <el-dialog title="修改绑定的手机号" :visible.sync="ephShow" width="40%">
+      <div style="margin-bottom: 12px; color: #606266">
+        验证码将发送到当前绑定邮箱：{{ baseInfo.email }}
+      </div>
       <el-form
         label-position="left"
         :model="phoForm"
@@ -338,12 +341,12 @@
             placeholder="请输入新手机号码"
           ></el-input>
         </el-form-item>
-        <el-form-item label="验证码" prop="checkCode">
+        <el-form-item label="邮箱验证码" prop="checkCode">
           <el-input
             type="munber"
             v-model="phoForm.checkCode"
             autocomplete="off"
-            placeholder="请输入验证码"
+            placeholder="请输入邮箱验证码"
           >
             <a
               style="color: #24a776"
@@ -353,7 +356,7 @@
               :cell-style="cellStyle"
               >{{
                 times == 0
-                  ? "发送验证码"
+                  ? "发送邮箱验证码"
                   : (times < 10 ? "0" + times : times) + "秒"
               }}</a
             >
@@ -366,7 +369,7 @@
               slot="append"
               >{{
                 times == 0
-                  ? "发送验证码"
+                  ? "发送邮箱验证码"
                   : (times < 10 ? "0" + times : times) + "秒"
               }}</a
             >
@@ -409,14 +412,36 @@
             placeholder="请输入邮箱"
           ></el-input>
         </el-form-item>
-        <!-- 验证码 -->
-        <div class="testCode">
-          <!-- 图片验证 -->
-        </div>
+        <el-form-item class="table-l text-f-ppc" label="验证码" prop="emailCode">
+          <el-input
+            type="text"
+            v-model="emailForm.emailCode"
+            autocomplete="off"
+            placeholder="请输入验证码"
+          >
+            <a
+              style="color: #24a776"
+              v-if="emailTimes === 0"
+              type="primary"
+              @click="sendEmailCode"
+              :cell-style="cellStyle"
+              slot="append"
+              >发送验证码</a
+            >
+            <a
+              style="color: #24a776"
+              v-else
+              type="primary"
+              :cell-style="cellStyle"
+              slot="append"
+              >{{ (emailTimes < 10 ? "0" + emailTimes : emailTimes) + "秒" }}</a
+            >
+          </el-input>
+        </el-form-item>
         <div class="btn-box">
           <div></div>
           <div class="btn-close" @click="editBaseInfo(4)">取消</div>
-          <div class="btn-true" @click="putAccountSendEmail()">保存</div>
+          <div class="btn-true" @click="putAccountUpdateEmail()">保存</div>
         </div>
       </el-form>
     </el-dialog>
@@ -538,6 +563,7 @@ import {
   getAccoutBaseInfo,
   putAccountUpdatePassword,
   putAccountSend,
+  putAccountUpdateEmail,
   putAccountUpdatePhone,
   getAccoutUpdateCode,
   getAccoutUpdateBaseInfo,
@@ -651,6 +677,7 @@ export default {
       emailForm: {
         email: "",
         emailFormPassword: "",
+        emailCode: "",
       },
       rulePhoForm: {
         //rules 的值
@@ -661,7 +688,13 @@ export default {
         //rules 的值
         email: [{ validator: emailFormEmail, trigger: "blur" }],
         emailFormPassword: [{ validator: emailFormPassword, trigger: "blur" }],
+        emailCode: [
+          { required: true, message: "请输入验证码", trigger: "blur" },
+          { pattern: /^\\d{6}$/, message: "验证码为6位数字", trigger: "blur" },
+        ],
       },
+      emailTimes: 0,
+      emailTimer: null,
       addUserFromRules: {},
       rules: {
         oldPassword: [{ validator: oldPassword, trigger: "blur" }],
@@ -836,6 +869,9 @@ export default {
       if (this.phoForm.newPhone == this.baseInfo.phone) {
         return this.$message("新手机号与当前绑定的手机号一致!");
       }
+      if (!this.baseInfo.email || this.baseInfo.email === "--") {
+        return this.$message("请先绑定邮箱");
+      }
       let r = setInterval(() => {
         if (num > 0) {
           num -= 1;
@@ -845,7 +881,7 @@ export default {
           clearInterval(r);
         }
       }, 1000);
-      getAccoutUpdateCode(this.phoForm.newPhone);
+      getAccoutUpdateCode(this.baseInfo.id);
     },
     getBaseInfo() {
       let info = null;
@@ -1028,12 +1064,55 @@ export default {
         if (res.code == 200) {
           this.$message({
             showClose: true,
-            message: res.msg,
+            message: "验证码已发送",
             type: "success",
           });
-          this.getBaseInfo();
+          if (this.emailTimer) {
+            clearInterval(this.emailTimer);
+            this.emailTimer = null;
+          }
+          let num = 60;
+          this.emailTimes = num;
+          this.emailTimer = setInterval(() => {
+            num -= 1;
+            this.emailTimes = num;
+            if (num <= 0) {
+              clearInterval(this.emailTimer);
+              this.emailTimer = null;
+              this.emailTimes = 0;
+            }
+          }, 1000);
         }
-        this.emShow = false;
+      });
+    },
+
+    sendEmailCode() {
+      if (!this.emailForm.email) {
+        return this.$message("请输入邮箱");
+      }
+      if (!this.emailForm.emailFormPassword) {
+        return this.$message("请输入登录密码");
+      }
+      if (this.emailTimes > 0) {
+        return;
+      }
+      this.putAccountSendEmail();
+    },
+
+    putAccountUpdateEmail() {
+      const datas = {
+        id: this.baseInfo.id,
+        email: this.emailForm.email,
+        code: this.emailForm.emailCode,
+      };
+      putAccountUpdateEmail(datas).then((res) => {
+        if (res.code == 200) {
+          this.$message({ showClose: true, message: "绑定成功", type: "success" });
+          this.getBaseInfo();
+          this.emShow = false;
+        } else {
+          this.$message.error(res.msg || "绑定失败");
+        }
       });
     },
 

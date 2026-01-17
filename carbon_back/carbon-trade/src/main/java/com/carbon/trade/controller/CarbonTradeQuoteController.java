@@ -6,6 +6,7 @@ import com.carbon.trade.common.BaseController;
 import com.carbon.trade.entity.CarbonTradeQuote;
 import com.carbon.trade.param.CarbonTradeQuoteQueryParam;
 import com.carbon.trade.param.StartTradingParam;
+import com.carbon.trade.service.CarbonTradePriceService;
 import com.carbon.trade.service.CarbonTradeQuoteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,9 @@ public class CarbonTradeQuoteController extends BaseController {
     @Resource
     private CarbonTradeQuoteService carbonTradeQuoteService;
 
+    @Resource
+    private CarbonTradePriceService carbonTradePriceService;
+
     @PostMapping("/getPageList")
     @ApiOperation(value = "供需行情分页列表", notes = "供需行情分页列表")
     public ApiResult<Paging<CarbonTradeQuote>> getPageList(@Valid @RequestBody(required = false) CarbonTradeQuoteQueryParam param) {
@@ -66,6 +70,7 @@ public class CarbonTradeQuoteController extends BaseController {
     @PostMapping("/startTrading")
     @ApiOperation(value = "发起询报价", notes = "发起询报价")
     public ApiResult<Boolean> startTrading(@Valid @RequestBody StartTradingParam param) {
+        carbonTradePriceService.startTrading(param);
         return ApiResult.ok(true);
     }
 
@@ -84,4 +89,3 @@ public class CarbonTradeQuoteController extends BaseController {
         return ApiResult.ok(list);
     }
 }
-

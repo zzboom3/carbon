@@ -32,15 +32,11 @@ public class MailServiceImpl implements MailService {
     @Override
     public void simple(String toEmail, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
-        // 发件人邮箱
-        message.setFrom("m15263411130@163.com");
-        // 收信人邮箱
+        message.setFrom(this.mailProperties.getUsername());
         String[] toArr = StrUtil.split(toEmail, ",");
 
         message.setTo(toArr);
-        // 邮件主题
         message.setSubject(subject);
-        // 邮件内容
         message.setText(text);
         this.javaMailSender.send(message);
     }
@@ -52,8 +48,9 @@ public class MailServiceImpl implements MailService {
         MimeMessageHelper messageHelper = new MimeMessageHelper(message);
 
         messageHelper.setFrom(this.mailProperties.getUsername());
+        String[] toArr = StrUtil.split(toEmail, ",");
+        messageHelper.setTo(toArr);
         messageHelper.setSubject(subject);
-        // 第二个参数表示是否html，设为true
         messageHelper.setText(text, true);
 
         this.javaMailSender.send(message);

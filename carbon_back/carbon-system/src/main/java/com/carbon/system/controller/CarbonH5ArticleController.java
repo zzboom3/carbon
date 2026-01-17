@@ -46,7 +46,11 @@ public class CarbonH5ArticleController {
     @GetMapping("/info/{id}")
     @ApiOperation(value = " 获取碳资讯文章 详情",notes = " 获取碳资讯文章 详情 ")
     public ApiResult<CarbonArticleQueryVo> getSysTenant(@PathVariable Long id) {
-        return ApiResult.ok(carbonH5ArticleService.getCarbonH5ArticleById(id));
+        CarbonArticleQueryVo vo = carbonH5ArticleService.getCarbonH5ArticleById(id);
+        if (vo == null) {
+            return ApiResult.fail("数据不存在");
+        }
+        return ApiResult.ok(vo);
     }
 
 

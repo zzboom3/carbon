@@ -1,7 +1,7 @@
 package com.carbon.auth.controller;
 
 import com.carbon.auth.service.LoginService;
-import com.carbon.auth.service.SmsService;
+import com.carbon.auth.service.EmailCodeService;
 import com.carbon.common.utils.HttpContextUtils;
 import com.carbon.domain.auth.param.ForgotPasswordParam;
 import com.carbon.domain.auth.param.LoginParam;
@@ -35,7 +35,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @Autowired
-    private SmsService smsService;
+    private EmailCodeService emailCodeService;
 
     @PostMapping("/login")
     @ApiOperation(value = "登录", notes = "登录", response = ApiResult.class)
@@ -51,10 +51,10 @@ public class LoginController {
     }
 
 
-    @GetMapping("/register/code/{phone}")
+    @GetMapping("/register/code/{email}")
     @ApiOperation(value = "验证码-注册", notes = "获取注册验证码")
-    public ApiResult<Boolean> sendRegisterCode(@PathVariable String phone) {
-        smsService.sendRegisterCode(phone);
+    public ApiResult<Boolean> sendRegisterCode(@PathVariable String email) {
+        emailCodeService.sendRegisterCode(email);
         return ApiResult.ok("发送成功");
     }
 
@@ -65,10 +65,10 @@ public class LoginController {
         return ApiResult.ok();
     }
 
-    @GetMapping("/forgotPassword/code/{phone}")
+    @GetMapping("/forgotPassword/code/{email}")
     @ApiOperation(value = "验证码-忘记密码", notes = "获取验证码")
-    public ApiResult<Boolean> sendForgotPasswordCode(@PathVariable String phone) {
-        smsService.sendForgotPasswordCode(phone);
+    public ApiResult<Boolean> sendForgotPasswordCode(@PathVariable String email) {
+        emailCodeService.sendForgotPasswordCode(email);
         return ApiResult.ok("发送成功");
     }
 
@@ -85,4 +85,3 @@ public class LoginController {
         return ApiResult.ok(loginService.verify(accountName));
     }
 }
-

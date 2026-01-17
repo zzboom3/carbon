@@ -77,7 +77,7 @@ public class CarbonTradePriceController extends BaseController {
     @PostMapping("/intendedTransaction")
     @ApiOperation(value = "意向成交", notes = "意向成交")
     public ApiResult<Boolean> intendedTransaction(@Valid @RequestBody IntendedTransactionParam param) {
+        carbonTradePriceService.intendedTransaction(param);
         return ApiResult.ok(true);
     }
 }
-

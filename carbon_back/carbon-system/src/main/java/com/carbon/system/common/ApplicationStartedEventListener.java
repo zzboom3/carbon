@@ -40,7 +40,11 @@ public class ApplicationStartedEventListener implements ApplicationListener<Appl
     @Override
     public void onApplicationEvent(ApplicationStartedEvent event) {
         log.info("......ApplicationStartedEvent......");
-        initDictCache();
+        try {
+            initDictCache();
+        } catch (Exception e) {
+            log.error("Init cache failed", e);
+        }
     }
 
 

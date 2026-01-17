@@ -32,11 +32,4 @@ public class LoginParam implements Serializable {
     @ApiModelProperty(value = "密码")
     @NotBlank(message="请输入密码")
     private String password;
-
-//    /**
-//     * 验证码
-//     */
-//    @ApiModelProperty(value = "验证码")
-//    @NotBlank(message="验证码不能为空")
-//    private String captcha;
 }

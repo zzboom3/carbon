@@ -98,6 +98,7 @@ export default {
       monthSupply: {},
       projectStat: {},
       quotation: {},
+      homeRefreshTimer: null,
     }
   },
   methods: {
@@ -177,6 +178,15 @@ export default {
     this.getAllDictionary()
     this.getHomePanelData()
     this.getNewsList()
+    this.homeRefreshTimer = setInterval(() => {
+      this.getHomePanelData()
+    }, 60000)
+  },
+  beforeDestroy() {
+    if (this.homeRefreshTimer) {
+      clearInterval(this.homeRefreshTimer)
+      this.homeRefreshTimer = null
+    }
   },
   computed: {
     ...mapGetters([

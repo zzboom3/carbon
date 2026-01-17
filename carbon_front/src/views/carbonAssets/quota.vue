@@ -292,6 +292,10 @@ export default {
     this.tradeMethods = getDiliveryMethodeDict(this.$store);
     this.formatAssetStatus(getAssetStatusDict(this.$store));
   },
+  activated() {
+    this.getTopData();
+    this.getList(this.current || 1);
+  },
   methods: {
     setNumber(str) {
       return setLargeNumber(str);
@@ -429,6 +433,7 @@ export default {
                 this.showTip();
                 this.dialogFormVisible = false;
                 this.getList(1);
+                this.getTopData();
               },
               () => {}
             );

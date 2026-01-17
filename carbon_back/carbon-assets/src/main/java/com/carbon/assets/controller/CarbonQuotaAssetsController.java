@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.carbon.assets.service.CarbonQuotaAssetsService;
 import com.carbon.assets.param.CarbonQuotaAssetsQueryParam;
 import com.carbon.assets.vo.CarbonAssetsTotalVo;
-import com.carbon.assets.vo.CarbonQuotaAssetsQueryVo;
 import com.carbon.assets.entity.CarbonQuotaAssets;
 import com.carbon.assets.common.BaseController;
 import com.carbon.domain.common.ApiResult;
@@ -18,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import javax.annotation.Resource;
 
 
@@ -42,12 +40,7 @@ public class CarbonQuotaAssetsController extends BaseController {
     @GetMapping("/assetsTotal")
     @ApiOperation(value = "碳配额面板数据", notes = "碳配额面板数据")
     public ApiResult<CarbonAssetsTotalVo> assetsTotal() {
-        CarbonAssetsTotalVo vo = new CarbonAssetsTotalVo();
-        vo.setTotal(BigDecimal.ZERO);
-        vo.setAvailableAmount(BigDecimal.ZERO);
-        vo.setFrozenAmount(BigDecimal.ZERO);
-        vo.setLockedAmount(BigDecimal.ZERO);
-        return ApiResult.ok(vo);
+        return ApiResult.ok(carbonQuotaAssetsService.getAssetsTotal());
     }
 
     @PostMapping("/getPageList")

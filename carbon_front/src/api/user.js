@@ -432,26 +432,16 @@ export function updateSpreadApi(data) {
   })
 }
 
-/**
- * 获取短信验证码
- * @param {*} data 
- * @returns 
- */
-export function regCode(phone) {
+export function regCode(email) {
   return request({
-    url: `/authCenter/auth/register/code/` + phone,
+    url: `/authCenter/auth/register/code/` + encodeURIComponent(email),
     method: 'GET',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })
 }
-/**
- * 忘记密码 短信验证码
- * @param {*} data 
- * @returns 
- */
-export function regForgotPasswordCode(phone) {
+export function regForgotPasswordCode(email) {
   return request({
-    url: `/authCenter/auth/forgotPassword/code/` + phone,
+    url: `/authCenter/auth/forgotPassword/code/` + encodeURIComponent(email),
     method: 'GET',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
   })

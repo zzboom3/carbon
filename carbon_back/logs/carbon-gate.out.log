@@ -1,0 +1,553 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.2.RELEASE)
+
+2026-01-18 02:19:26.509  INFO 39024 --- [           main] com.carbon.gate.GateApplication          : The following profiles are active: dev
+2026-01-18 02:19:28.819  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:28.825  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:28.850  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18 02:19:28.858  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:28.859  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-01-18 02:19:28.867  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-01-18 02:19:28.890  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-18 02:19:28.893  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-18 02:19:28.921  INFO 39024 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2026-01-18 02:19:29.070  WARN 39024 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2026-01-18 02:19:29.096  WARN 39024 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'hystrix.stream' contains invalid characters, please migrate to a valid format.
+2026-01-18 02:19:29.343  WARN 39024 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.carbon.gate]' package. Please check your configuration.
+2026-01-18 02:19:29.643  INFO 39024 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2e535de9-ec95-345f-84a1-c246f7d83a73
+2026-01-18 02:19:29.702  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.assets.api.AssetsServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:29.709  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.auth.api.LoginCheckApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:29.715  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.chainmaker.api.ChainMakerServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:29.720  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.BmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:29.726  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.CmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:29.732  INFO 39024 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.system.api.SystemServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-18 02:19:32.121  INFO 39024 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2026-01-18 02:19:32.152  INFO 39024 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18 02:19:32.153  INFO 39024 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2026-01-18 02:19:32.901  INFO 39024 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-18 02:19:32.903  INFO 39024 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6336 ms
+2026-01-18 02:19:34.386  WARN 39024 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:34.388  INFO 39024 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:34.431  INFO 39024 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@632d4cf2
+2026-01-18 02:19:46.252  WARN 39024 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-18 02:19:46.255  INFO 39024 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-18 02:19:47.138  INFO 39024 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2026-01-18 02:19:48.370  INFO 39024 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+2026-01-18 02:19:48.909  INFO 39024 --- [           main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2026-01-18 02:19:49.760  INFO 39024 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.0 
+2026-01-18 02:19:51.374  WARN 39024 --- [           main] o.a.r.s.a.RocketMQAutoConfiguration      : The necessary spring property 'rocketmq.name-server' is not defined, all rockertmq beans creation are skipped!
+2026-01-18 02:19:54.659  WARN 39024 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.geo.Point to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:54.661  WARN 39024 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.geo.Point as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:54.662  WARN 39024 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.elasticsearch.core.geo.GeoPoint to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:54.662  WARN 39024 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.elasticsearch.core.geo.GeoPoint as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-18 02:19:54.827  INFO 39024 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Spring Data Elasticsearch: 4.0.2.RELEASE
+2026-01-18 02:19:54.828  INFO 39024 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client in build: 7.6.2
+2026-01-18 02:19:54.829  INFO 39024 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client used: 7.6.2
+2026-01-18 02:19:55.438  INFO 39024 --- [           main] o.s.c.n.zuul.ZuulFilterInitializer       : Starting filter initializer
+2026-01-18 02:19:55.467  INFO 39024 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-01-18 02:19:55.840  INFO 39024 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2026-01-18 02:19:57.797  INFO 39024 --- [           main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP carbon-gate 192.168.100.1:9091 register finished
+2026-01-18 02:19:58.177  INFO 39024 --- [           main] com.carbon.gate.GateApplication          : Started GateApplication in 38.337 seconds (JVM running for 41.498)
+2026-01-18 02:20:19.603  INFO 39024 --- [nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-18 02:20:19.604  INFO 39024 --- [nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-18 02:20:19.724  INFO 39024 --- [nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 119 ms
+2026-01-18 02:20:19.756 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:20:19.832  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/v2/api-docs
+2026-01-18 02:20:20.175  INFO 39024 --- [nio-9091-exec-1] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:20:20.245  INFO 39024 --- [nio-9091-exec-1] c.netflix.loadbalancer.BaseLoadBalancer  : Client: carbon-system instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-system,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2026-01-18 02:20:20.264  INFO 39024 --- [nio-9091-exec-1] c.n.l.DynamicServerListLoadBalancer      : Using serverListUpdater PollingServerListUpdater
+2026-01-18 02:20:20.333  INFO 39024 --- [nio-9091-exec-1] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:20:20.338  INFO 39024 --- [nio-9091-exec-1] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client carbon-system initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-system,current list of Servers=[192.168.100.1:9002],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.100.1:9002;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@50d8e245
+2026-01-18 02:20:21.277  INFO 39024 --- [erListUpdater-0] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-system.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:20:50.354 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:20:50.411  WARN 39024 --- [nio-9091-exec-5] s.b.a.e.ElasticsearchRestHealthIndicator : Elasticsearch health check failed
+
+java.net.ConnectException: Connection refused: no further information
+	at org.elasticsearch.client.RestClient.extractAndWrapCause(RestClient.java:823) ~[elasticsearch-rest-client-7.6.2.jar:7.6.2]
+	at org.elasticsearch.client.RestClient.performRequest(RestClient.java:248) ~[elasticsearch-rest-client-7.6.2.jar:7.6.2]
+	at org.elasticsearch.client.RestClient.performRequest(RestClient.java:235) ~[elasticsearch-rest-client-7.6.2.jar:7.6.2]
+	at org.springframework.boot.actuate.elasticsearch.ElasticsearchRestHealthIndicator.doHealthCheck(ElasticsearchRestHealthIndicator.java:60) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.AbstractHealthIndicator.health(AbstractHealthIndicator.java:82) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthIndicator.getHealth(HealthIndicator.java:37) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointWebExtension.getHealth(HealthEndpointWebExtension.java:85) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointWebExtension.getHealth(HealthEndpointWebExtension.java:44) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:99) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getAggregateHealth(HealthEndpointSupport.java:110) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getContribution(HealthEndpointSupport.java:96) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:74) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointSupport.getHealth(HealthEndpointSupport.java:61) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointWebExtension.health(HealthEndpointWebExtension.java:71) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.health.HealthEndpointWebExtension.health(HealthEndpointWebExtension.java:60) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:282) ~[spring-core-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.boot.actuate.endpoint.invoke.reflect.ReflectiveOperationInvoker.invoke(ReflectiveOperationInvoker.java:77) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredOperation.invoke(AbstractDiscoveredOperation.java:60) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$ServletWebOperationAdapter.handle(AbstractWebMvcEndpointHandlerMapping.java:305) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(AbstractWebMvcEndpointHandlerMapping.java:388) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.37.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.37.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123) ~[druid-1.1.10.jar:1.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at com.carbon.gate.filter.CrossDomainFilter.doFilter(CrossDomainFilter.java:75) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[na:na]
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvent(DefaultConnectingIOReactor.java:174) ~[httpcore-nio-4.4.13.jar:4.4.13]
+	at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processEvents(DefaultConnectingIOReactor.java:148) ~[httpcore-nio-4.4.13.jar:4.4.13]
+	at org.apache.http.impl.nio.reactor.AbstractMultiworkerIOReactor.execute(AbstractMultiworkerIOReactor.java:351) ~[httpcore-nio-4.4.13.jar:4.4.13]
+	at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.execute(PoolingNHttpClientConnectionManager.java:221) ~[httpasyncclient-4.1.4.jar:4.1.4]
+	at org.apache.http.impl.nio.client.CloseableHttpAsyncClientBase$1.run(CloseableHttpAsyncClientBase.java:64) ~[httpasyncclient-4.1.4.jar:4.1.4]
+	... 1 common frames omitted
+
+2026-01-18 02:21:18.804 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:21:18.806  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/authCenter/v2/api-docs
+2026-01-18 02:21:18.860  INFO 39024 --- [nio-9091-exec-7] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-auth.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:21:18.863  INFO 39024 --- [nio-9091-exec-7] c.netflix.loadbalancer.BaseLoadBalancer  : Client: carbon-auth instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-auth,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2026-01-18 02:21:18.865  INFO 39024 --- [nio-9091-exec-7] c.n.l.DynamicServerListLoadBalancer      : Using serverListUpdater PollingServerListUpdater
+2026-01-18 02:21:18.889  INFO 39024 --- [nio-9091-exec-7] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-auth.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:21:18.891  INFO 39024 --- [nio-9091-exec-7] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client carbon-auth initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-auth,current list of Servers=[192.168.100.1:9001],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.100.1:9001;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@23705cb2
+2026-01-18 02:21:19.878  INFO 39024 --- [erListUpdater-0] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-auth.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:21:34.710 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:21:34.711  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/v2/api-docs
+2026-01-18 02:21:49.618 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:21:49.619  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/v2/api-docs
+2026-01-18 02:21:49.672  INFO 39024 --- [nio-9091-exec-8] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-assets.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:21:49.674  INFO 39024 --- [nio-9091-exec-8] c.netflix.loadbalancer.BaseLoadBalancer  : Client: carbon-assets instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-assets,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2026-01-18 02:21:49.676  INFO 39024 --- [nio-9091-exec-8] c.n.l.DynamicServerListLoadBalancer      : Using serverListUpdater PollingServerListUpdater
+2026-01-18 02:21:49.692  INFO 39024 --- [nio-9091-exec-8] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-assets.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:21:49.693  INFO 39024 --- [nio-9091-exec-8] c.n.l.DynamicServerListLoadBalancer      : DynamicServerListLoadBalancer for client carbon-assets initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=carbon-assets,current list of Servers=[192.168.100.1:9003],Load balancer stats=Zone stats: {unknown=[Zone:unknown;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.100.1:9003;	Zone:UNKNOWN;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:com.alibaba.cloud.nacos.ribbon.NacosServerList@7b85a691
+2026-01-18 02:21:50.676  INFO 39024 --- [erListUpdater-1] c.netflix.config.ChainedDynamicProperty  : Flipping property: carbon-assets.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2026-01-18 02:22:03.207 ERROR 39024 --- [nio-9091-exec-9] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:22:03.209  INFO 39024 --- [nio-9091-exec-9] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/v2/api-docs
+2026-01-18 02:26:37.822 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:26:37.824  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/authCenter/auth/login
+2026-01-18 02:27:06.043 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:27:06.044  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/authCenter/auth/verify/admin
+2026-01-18 02:33:51.656 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:51.660  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/authCenter/auth/login
+2026-01-18 02:33:53.097 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:53.099  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:33:53.101 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:53.102 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:53.101 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:53.103  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 02:33:53.103  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysDict/getAllDict
+2026-01-18 02:33:53.104 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:53.105  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:33:53.107  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/dataPanel/home
+2026-01-18 02:33:53.293  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674833000}
+2026-01-18 02:33:53.293  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674833000}
+2026-01-18 02:33:53.293  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674833000}
+2026-01-18 02:33:53.293  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674833000}
+2026-01-18 02:33:54.210 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:33:54.211  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/dataPanel/home
+2026-01-18 02:33:54.253  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674834000}
+2026-01-18 02:34:30.117 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:34:30.119  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:34:30.150  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674870000}
+2026-01-18 02:34:47.979 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:34:47.980  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonCreditAssets/getPageList
+2026-01-18 02:34:48.001  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674887000}
+2026-01-18 02:35:03.729 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:35:03.729 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:35:03.730  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 02:35:03.730  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonQuotaAssets/getPageList
+2026-01-18 02:35:03.735 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:35:03.737  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonQuotaAssets/assetsTotal
+2026-01-18 02:35:03.752  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674903000}
+2026-01-18 02:35:03.752  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674903000}
+2026-01-18 02:35:03.756  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674903000}
+2026-01-18 02:35:26.363 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:35:26.365  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:35:26.385  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674926000}
+2026-01-18 02:35:50.274 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:35:50.276  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonProject/getPageList
+2026-01-18 02:35:50.297  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674950000}
+2026-01-18 02:36:07.031 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:36:07.032  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonProject/getDevelopPageList
+2026-01-18 02:36:07.063  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674967000}
+2026-01-18 02:36:27.926 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:36:27.926 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:36:27.927  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonProjectDoc/getPageList
+2026-01-18 02:36:27.928  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonProject/getPageList
+2026-01-18 02:36:27.956  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674987000}
+2026-01-18 02:36:27.956  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768674987000}
+2026-01-18 02:36:42.833 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:36:42.833 ERROR 39024 --- [nio-9091-exec-9] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:36:42.835  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 02:36:42.835  INFO 39024 --- [nio-9091-exec-9] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 02:36:42.866  INFO 39024 --- [nio-9091-exec-9] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675002000}
+2026-01-18 02:36:42.867  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675002000}
+2026-01-18 02:37:01.717 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:37:01.718  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradePrice/getPageList
+2026-01-18 02:37:01.736  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675021000}
+2026-01-18 02:37:03.909 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:37:03.911  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 02:37:03.930  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675023000}
+2026-01-18 02:37:20.702 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:37:20.703  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 02:37:20.718  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675040000}
+2026-01-18 02:37:38.720 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:37:38.721  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 02:37:38.738  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675058000}
+2026-01-18 02:37:44.557 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:37:44.558  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 02:37:44.575  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675064000}
+2026-01-18 02:38:01.017 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:01.019  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 02:38:01.036  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675081000}
+2026-01-18 02:38:20.878 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:20.879 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:20.879 ERROR 39024 --- [nio-9091-exec-9] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:20.880  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysTenant/list
+2026-01-18 02:38:20.880  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysRole/getPageList
+2026-01-18 02:38:20.881  INFO 39024 --- [nio-9091-exec-9] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/getPageList
+2026-01-18 02:38:20.895  INFO 39024 --- [nio-9091-exec-9] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675100000}
+2026-01-18 02:38:20.895  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675100000}
+2026-01-18 02:38:20.895  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675100000}
+2026-01-18 02:38:35.999 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:36.000  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysTenant/getPageList
+2026-01-18 02:38:36.017  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675116000}
+2026-01-18 02:38:54.578 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:38:54.578  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 02:38:54.594  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675134000}
+2026-01-18 02:39:11.605 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:39:11.607  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:39:11.628  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675151000}
+2026-01-18 02:39:30.797 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:39:30.798  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonMetaregistry/getPageList
+2026-01-18 02:39:30.819  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675170000}
+2026-01-18 02:39:48.077 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:39:48.079  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonMetaregistryDoc/getPageList
+2026-01-18 02:39:48.099  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675188000}
+2026-01-18 02:40:05.875 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:40:05.876  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 02:40:05.892  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675205000}
+2026-01-18 02:40:29.149 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:40:29.150 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:40:29.155  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/list
+2026-01-18 02:40:29.155  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysRole/getPageList
+2026-01-18 02:40:29.174  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675229000}
+2026-01-18 02:40:29.174  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675229000}
+2026-01-18 02:40:48.052 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:40:48.054  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysDict/getPageList
+2026-01-18 02:40:48.071  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675248000}
+2026-01-18 02:41:02.817 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:41:02.818  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/list
+2026-01-18 02:41:02.835  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675262000}
+2026-01-18 02:41:23.832 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:41:23.833  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:41:23.844 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:41:23.846  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:41:23.847  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675283000}
+2026-01-18 02:43:22.859 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:43:22.860  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 02:43:22.875  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675402000}
+2026-01-18 02:43:28.789 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:43:28.791  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:43:28.808  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675408000}
+2026-01-18 02:43:55.270 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:43:55.271  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:43:55.272 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:43:55.273 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:43:55.274  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:43:55.274  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:43:55.297  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675435000}
+2026-01-18 02:43:55.297  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675435000}
+2026-01-18 02:44:23.211 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:44:23.213  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:44:23.232 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:44:23.234  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:44:23.235 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:44:23.235  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:44:23.258  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675463000}
+2026-01-18 02:44:23.259  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675463000}
+2026-01-18 02:46:05.842 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:46:05.842  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:46:05.853 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:46:05.854  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:46:05.854 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:46:05.855  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:46:05.873  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675565000}
+2026-01-18 02:46:05.877  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675565000}
+2026-01-18 02:48:36.793 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:48:36.796  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 02:48:36.800 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:48:36.802  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 02:48:36.802 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 02:48:36.804  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 02:48:36.823  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675716000}
+2026-01-18 02:48:36.823  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768675716000}
+2026-01-18 03:01:14.761 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:01:14.761 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:01:14.761 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:01:14.765  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 03:01:14.765  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 03:01:14.765  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 03:01:14.797  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768676474000}
+2026-01-18 03:01:14.797  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768676474000}
+2026-01-18 03:01:18.925 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:01:18.926  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonProject/getPageList
+2026-01-18 03:01:18.946  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768676478000}
+2026-01-18 03:01:21.125 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:01:21.127  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 03:01:21.145  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768676481000}
+2026-01-18 03:11:13.697 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:11:13.698  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 03:11:13.702 ERROR 39024 --- [nio-9091-exec-2] com.carbon.common.utils.JwtUtil          : token校验失败:Cannot invoke "String.split(String)" because "token" is null
+2026-01-18 03:11:13.749  WARN 39024 --- [nio-9091-exec-2] o.s.c.n.z.filters.post.SendErrorFilter   : Error during filtering
+
+com.netflix.zuul.exception.ZuulException: Filter threw Exception
+	at com.netflix.zuul.FilterProcessor.processZuulFilter(FilterProcessor.java:227) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.FilterProcessor.runFilters(FilterProcessor.java:157) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.FilterProcessor.preRoute(FilterProcessor.java:133) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.ZuulRunner.preRoute(ZuulRunner.java:105) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.http.ZuulServlet.preRoute(ZuulServlet.java:125) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.http.ZuulServlet.service(ZuulServlet.java:74) ~[zuul-core-1.3.1.jar:1.3.1]
+	at org.springframework.web.servlet.mvc.ServletWrappingController.handleRequestInternal(ServletWrappingController.java:166) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.cloud.netflix.zuul.web.ZuulController.handleRequest(ZuulController.java:45) ~[spring-cloud-netflix-zuul-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:52) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.37.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.37.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123) ~[druid-1.1.10.jar:1.1.10]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at com.carbon.gate.filter.CrossDomainFilter.doFilter(CrossDomainFilter.java:75) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.3.2.RELEASE.jar:2.3.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.8.RELEASE.jar:5.2.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.IllegalStateException: Cannot parse the request!
+	at com.netflix.zuul.http.HttpServletRequestWrapper.getParameter(HttpServletRequestWrapper.java:303) ~[zuul-core-1.3.1.jar:1.3.1]
+	at org.springframework.cloud.netflix.zuul.filters.pre.DebugFilter.shouldFilter(DebugFilter.java:58) ~[spring-cloud-netflix-zuul-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.netflix.zuul.ZuulFilter.runFilter(ZuulFilter.java:114) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.FilterProcessor.processZuulFilter(FilterProcessor.java:193) ~[zuul-core-1.3.1.jar:1.3.1]
+	... 58 common frames omitted
+Caused by: java.io.IOException: Stream closed
+	at org.apache.catalina.connector.InputBuffer.read(InputBuffer.java:359) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteInputStream.read(CoyoteInputStream.java:132) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.catalina.connector.CoyoteInputStream.read(CoyoteInputStream.java:110) ~[tomcat-embed-core-9.0.37.jar:9.0.37]
+	at org.apache.commons.io.IOUtils.copyLarge(IOUtils.java:1792) ~[commons-io-2.4.jar:2.4]
+	at org.apache.commons.io.IOUtils.copyLarge(IOUtils.java:1769) ~[commons-io-2.4.jar:2.4]
+	at org.apache.commons.io.IOUtils.copy(IOUtils.java:1744) ~[commons-io-2.4.jar:2.4]
+	at com.netflix.zuul.http.HttpServletRequestWrapper.parseRequest(HttpServletRequestWrapper.java:152) ~[zuul-core-1.3.1.jar:1.3.1]
+	at com.netflix.zuul.http.HttpServletRequestWrapper.getParameter(HttpServletRequestWrapper.java:301) ~[zuul-core-1.3.1.jar:1.3.1]
+	... 61 common frames omitted
+
+2026-01-18 03:11:39.782 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:11:39.782  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/authCenter/auth/login
+2026-01-18 03:14:18.486 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:14:18.488  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/v2/api-docs
+2026-01-18 03:17:48.004 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:17:48.005  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 03:17:48.046  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677468000}
+2026-01-18 03:17:52.602 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:17:52.602  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/EscarbonMethodology/getByKeyword
+2026-01-18 03:17:52.620  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677472000}
+2026-01-18 03:17:57.182 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:17:57.183  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 03:17:57.198  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677477000}
+2026-01-18 03:18:00.518 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:00.519  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysDict/getPageList
+2026-01-18 03:18:00.533  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677480000}
+2026-01-18 03:18:01.642 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:01.643  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/list
+2026-01-18 03:18:01.662  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677481000}
+2026-01-18 03:18:04.126 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:04.126 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:04.126 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:04.127  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 03:18:04.127  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/dataPanel/home
+2026-01-18 03:18:04.128  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysDict/getAllDict
+2026-01-18 03:18:04.141  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677484000}
+2026-01-18 03:18:04.146  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677484000}
+2026-01-18 03:18:04.150  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677484000}
+2026-01-18 03:18:04.300 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:04.301  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/dataPanel/home
+2026-01-18 03:18:04.319  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677484000}
+2026-01-18 03:18:39.483 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:39.485  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 03:18:39.499  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677519000}
+2026-01-18 03:18:41.755 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:41.755  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/carbonArticle/getPageList
+2026-01-18 03:18:41.769  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677521000}
+2026-01-18 03:18:45.329 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:45.330 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:45.330  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysMenu/userMenus
+2026-01-18 03:18:45.331  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 03:18:45.354  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677525000}
+2026-01-18 03:18:56.363 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:56.363 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:56.364  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:18:56.365  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:18:56.383  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677536000}
+2026-01-18 03:18:56.385  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677536000}
+2026-01-18 03:18:58.796 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:18:58.798  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradePrice/getPageList
+2026-01-18 03:18:58.811  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677538000}
+2026-01-18 03:19:00.145 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:00.145 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:00.147  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:19:00.148  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:19:00.163  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677540000}
+2026-01-18 03:19:00.165  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677540000}
+2026-01-18 03:19:02.953 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:02.954  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 03:19:02.969  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677542000}
+2026-01-18 03:19:04.408 ERROR 39024 --- [nio-9091-exec-2] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:04.410  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 03:19:04.419  INFO 39024 --- [nio-9091-exec-2] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677544000}
+2026-01-18 03:19:05.841 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:05.842  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 03:19:05.856  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677545000}
+2026-01-18 03:19:19.673 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:19.675  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 03:19:19.686  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677559000}
+2026-01-18 03:19:24.219 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:24.219 ERROR 39024 --- [nio-9091-exec-7] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:24.219 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:24.222  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getListByTenant
+2026-01-18 03:19:24.222  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/system/sysAccount/info/103
+2026-01-18 03:19:24.223  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getListByTenant
+2026-01-18 03:19:24.240  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677564000}
+2026-01-18 03:19:24.250  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677564000}
+2026-01-18 03:19:24.253  INFO 39024 --- [nio-9091-exec-7] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677564000}
+2026-01-18 03:19:41.547 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:41.552  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 03:19:41.564  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677581000}
+2026-01-18 03:19:44.122 ERROR 39024 --- [nio-9091-exec-4] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:44.123  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/exchangeAccount/getPageList
+2026-01-18 03:19:44.136  INFO 39024 --- [nio-9091-exec-4] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677584000}
+2026-01-18 03:19:45.333 ERROR 39024 --- [io-9091-exec-10] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:45.333 ERROR 39024 --- [nio-9091-exec-1] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:45.335  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:19:45.335  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:19:45.350  INFO 39024 --- [nio-9091-exec-1] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677585000}
+2026-01-18 03:19:45.350  INFO 39024 --- [io-9091-exec-10] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677585000}
+2026-01-18 03:19:54.214 ERROR 39024 --- [nio-9091-exec-8] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:19:54.215  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:19:54.225  INFO 39024 --- [nio-9091-exec-8] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677594000}
+2026-01-18 03:20:00.043 ERROR 39024 --- [nio-9091-exec-5] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:20:00.043  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:20:00.056  INFO 39024 --- [nio-9091-exec-5] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677600000}
+2026-01-18 03:20:03.455 ERROR 39024 --- [nio-9091-exec-3] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:20:03.459  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/trade/carbonTradeQuote/getPageList
+2026-01-18 03:20:03.470  INFO 39024 --- [nio-9091-exec-3] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677603000}
+2026-01-18 03:20:07.846 ERROR 39024 --- [nio-9091-exec-6] c.c.c.exception.GlobalErrorController    : errorPath....
+2026-01-18 03:20:07.851  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : 请求的url:  http://localhost:9091/assets/carbonExchange/getPageList
+2026-01-18 03:20:07.866  INFO 39024 --- [nio-9091-exec-6] com.carbon.gate.filter.MyZuulFilter      : permissionCheck: {"msg":"操作成功","code":200,"time":1768677607000}

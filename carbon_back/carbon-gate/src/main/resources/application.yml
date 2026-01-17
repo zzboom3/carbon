@@ -18,17 +18,17 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://192.168.100.128:3333/carbon?useUnicode=true&characterEncoding=utf8
-      username: root
-      password: root
+      url: jdbc:mysql://${CARBON_MYSQL_HOST:localhost}:${CARBON_MYSQL_PORT:3306}/${CARBON_MYSQL_DB:carbon}?useUnicode=true&characterEncoding=utf8
+      username: ${CARBON_MYSQL_USER:root}
+      password: ${CARBON_MYSQL_PASSWORD:root}
   redis:
-    host: 192.168.100.128
-    port: 6379
-    # password: 1234
+    host: ${CARBON_REDIS_HOST:localhost}
+    port: ${CARBON_REDIS_PORT:6379}
+    password: ${CARBON_REDIS_PASSWORD:}
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.100.128:8848
+        server-addr: ${CARBON_NACOS_ADDR:localhost:8848}
   servlet:
     multipart:
       max-file-size: 50MB
@@ -46,25 +46,25 @@ zuul:
       path: /authCenter/** #配置请求URL的请求规则
       serviceId: carbon-auth #指定Eureka注册中心中的服务id
       stripPrefix: false
-      sentiviteHeaders:   #将指定路由的敏感头设置为空
+      sensitiveHeaders:   #将指定路由的敏感头设置为空
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
     system: #系统
       path: /system/**
       serviceId: carbon-system
       stripPrefix: false
-      sentiviteHeaders:
+      sensitiveHeaders:
       customSensitiveHeaders: true
     assets: #资产
       path: /assets/**
       serviceId: carbon-assets
       stripPrefix: false
-      sentiviteHeaders:
+      sensitiveHeaders:
       customSensitiveHeaders: true
     trade: #交易
       path: /trade/**
       serviceId: carbon-trade
       stripPrefix: false
-      sentiviteHeaders:
+      sensitiveHeaders:
       customSensitiveHeaders: true
 
 
@@ -82,4 +82,4 @@ ribbon:
 knife4j:
   nacos:
     enable: true
-    serviceUrl: http://192.168.100.128:8848/nacos/
+    serviceUrl: http://${CARBON_NACOS_ADDR:localhost:8848}/nacos/

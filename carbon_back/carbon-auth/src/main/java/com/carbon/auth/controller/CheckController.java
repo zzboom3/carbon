@@ -67,6 +67,9 @@ public class CheckController implements LoginCheckApi {
 			return ApiResult.fail(ApiCode.UNAUTHORIZED);
 		}
 		SecurityData securityData = loginService.getSecurityData(accountId);
+		if (securityData == null) {
+			return ApiResult.fail(ApiCode.UNAUTHORIZED);
+		}
 		return ApiResult.ok(securityData);
 	}
 

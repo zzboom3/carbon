@@ -19,20 +19,29 @@ public class RedisKeyName {
     public static final String ACCOUNT_NAME_CACHE = "account:name:";
 
     /**
-     * 注册发送短信
+     * 验证码发送限流
      */
-    public static final String SMS_REGISTER_KEY = "sms:register:";
+    public static final String SMS_RATE_LIMIT_KEY = "sms:rateLimit:";
 
     /**
-     * 忘记密码发送短信
+     * 邮箱验证码
      */
-    public static final String SMS_FORGOT_PASSWORD_KEY = "sms:forgotPassword:";
+    public static final String EMAIL_BIND_KEY = "email:bind:";
 
     /**
-     * 修改手机号发送短信
-     *
+     * 邮箱验证码-注册
      */
-    public static final String SMS_UPDATE_PHONE_KEY = "sms:updatePhone:";
+    public static final String EMAIL_REGISTER_KEY = "email:register:";
+
+    /**
+     * 邮箱验证码-忘记密码
+     */
+    public static final String EMAIL_FORGOT_PASSWORD_KEY = "email:forgotPassword:";
+
+    /**
+     * 邮箱验证码-修改手机号
+     */
+    public static final String EMAIL_UPDATE_PHONE_KEY = "email:updatePhone:";
     /**
      * 碳文章列表
      *

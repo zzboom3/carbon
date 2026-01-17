@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 import cn.hutool.core.util.StrUtil;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,6 +47,9 @@ public class ExchangeAccountController extends BaseController {
 
     @Resource
     private ExchangeAccountService exchangeAccountService;
+
+    @Value("${carbon.publicBaseUrl:}")
+    private String publicBaseUrl;
 
     @PostMapping("/getPageList")
     @ApiOperation(value = "交易账户分页列表", notes = "交易账户分页列表")
@@ -109,7 +113,25 @@ public class ExchangeAccountController extends BaseController {
 
         Map<String, Object> res = new HashMap<>();
         res.put("code", 200);
-        res.put("msg", "http://localhost:9091/assets/upload/assets/" + dateDir + "/" + safeName);
+        res.put("msg", buildPublicUrl("/assets/upload/assets/" + dateDir + "/" + safeName));
         return res;
+    }
+
+    private String buildPublicUrl(String relativePath) {
+        if (StrUtil.isBlank(publicBaseUrl)) {
+            return relativePath;
+        }
+        String base = StrUtil.trim(publicBaseUrl);
+        while (base.endsWith("/")) {
+            base = base.substring(0, base.length() - 1);
+        }
+        String rel = StrUtil.blankToDefault(relativePath, "");
+        if (!rel.startsWith("/")) {
+            rel = "/" + rel;
+        }
+        if (base.endsWith("/assets") && rel.startsWith("/assets/")) {
+            rel = rel.substring("/assets".length());
+        }
+        return base + rel;
     }
 }

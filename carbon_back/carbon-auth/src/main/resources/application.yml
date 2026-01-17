@@ -9,13 +9,30 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.100.128:8848
+        server-addr: ${CARBON_NACOS_ADDR:localhost:8848}
   application:
     name: carbon-auth #指定服务名
   profiles:
     # 本地运行使用dev，打包时使用test
     active: dev
 #    active: test
+
+  mail:
+    host: smtp.qq.com
+    username: ${CARBON_MAIL_USERNAME:}
+    password: ${CARBON_MAIL_PASSWORD:}
+    default-encoding: utf-8
+    port: 465
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true
 
   jackson:
     #日期格式化

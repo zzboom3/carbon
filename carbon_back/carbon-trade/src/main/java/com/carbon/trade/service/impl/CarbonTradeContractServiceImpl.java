@@ -56,7 +56,7 @@ public class CarbonTradeContractServiceImpl extends BaseServiceImpl<CarbonTradeC
 
     @Override
     public void addTradeContract(CarbonTradeContract tradeContract) {
-        tradeContract.setStatus(TradeStatusEnum.IN_TRADE.getStatus());
+        tradeContract.setStatus(TradeStatusEnum.INTENDED_TRADE.getStatus());
         this.save(tradeContract);
     }
 

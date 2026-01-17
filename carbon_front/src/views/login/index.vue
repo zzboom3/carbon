@@ -108,7 +108,6 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import { getLoginPicApi, captchaApi, login } from "@/api/user";
 import { getStoreStaff } from "@/libs/public";
 import { getWXCodeByUrl, loginByWxCode } from "@/libs/wechat";
 import { getWechatConfig } from "@/api/wxApi";
@@ -168,7 +167,9 @@ export default {
     }
     const rememberMe = localStorage.getItem('login-remember-me');
     if (rememberMe) {
-        this.loginForm = JSON.parse(rememberMe);
+        const cache = JSON.parse(rememberMe);
+        this.loginForm.account = cache.account || '';
+        this.loginForm.pwd = cache.pwd || '';
         this.loginForm.rememberMe = true;
     }
   },
@@ -199,7 +200,7 @@ export default {
           this.$store.dispatch('user/login', this.loginForm)
             .then(() => {
               if (this.loginForm.rememberMe) {
-                 localStorage.setItem('login-remember-me', JSON.stringify(this.loginForm));
+                 localStorage.setItem('login-remember-me', JSON.stringify({ account: this.loginForm.account, pwd: this.loginForm.pwd }));
               } else {
                  localStorage.removeItem('login-remember-me');
               }
@@ -478,7 +479,7 @@ $white: #ffffff;
       .input-icon { color: $eco-green; }
     }
   }
-  
+
   .show-pwd-icon {
     position: absolute;
     right: 15px;

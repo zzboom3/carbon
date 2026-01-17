@@ -93,8 +93,34 @@ service.interceptors.response.use(
     }
   },
   error => {
+    const resp = error && error.response
+    const data = resp && resp.data
+
+    if (resp && data) {
+      if (data.code === 401 || resp.status === 401) {
+        MessageBox.confirm('登录状态已过期，请重新登录。', '提示', {
+          confirmButtonText: '重新登录',
+          cancelButtonText: '取消',
+          type: 'light-green-btn',
+          customClass: 'tipClass'
+        }).then(() => {
+          store.dispatch('user/resetToken').then(() => {
+            location.reload()
+          })
+        })
+        return Promise.reject(data)
+      }
+
+      Message({
+        message: data.msg || data.message || '请求失败',
+        type: 'error',
+        duration: 5 * 1000
+      })
+      return Promise.reject(new Error(data.msg || data.message || 'Request Error'))
+    }
+
     Message({
-      message: error.msg,
+      message: error.message || '网络异常',
       type: 'error',
       duration: 5 * 1000
     })

@@ -1,6 +1,6 @@
 package com.carbon.system.controller;
 
-import  com.carbon.system.service.FeishuFiletokenService;
+import com.carbon.system.service.FeishuFiletokenService;
 import com.carbon.system.vo.EnterpriseGreennessVo;
 import com.carbon.system.service.DataPanelService;
 import com.carbon.system.vo.StatHomeDataVo;
@@ -10,16 +10,23 @@ import com.carbon.system.vo.StatAccountVo;
 import com.carbon.system.vo.StatCarbonIncomeVo;
 import com.carbon.system.vo.StatCarbonMonthVo;
 import com.carbon.system.vo.StatCarbonProjectVo;
+import com.carbon.system.vo.StatCarbonProject;
 import com.carbon.system.common.BaseController;
 import com.carbon.domain.common.ApiResult;
 import com.carbon.common.utils.HttpContextUtils;
+import com.carbon.system.entity.CarbonProject;
 import com.carbon.system.entity.SysAccount;
 import com.carbon.system.entity.SysTenant;
+import com.carbon.system.mapper.CarbonProjectMapper;
 import com.carbon.system.mapper.SysAccountMapper;
 import com.carbon.system.mapper.SysTenantMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +58,9 @@ public class DataPanelController extends BaseController {
     @Resource
     private SysTenantMapper sysTenantMapper;
 
+    @Resource
+    private CarbonProjectMapper carbonProjectMapper;
+
     private static StatCarbonIncomeVo zeroIncome(Date now) {
         StatCarbonIncomeVo vo = new StatCarbonIncomeVo();
         vo.setStatDate(now);
@@ -81,6 +91,123 @@ public class DataPanelController extends BaseController {
         vo.setSingCount(0);
         vo.setProjectList(new ArrayList<>());
         return vo;
+    }
+
+    private static boolean notBlank(String value) {
+        return value != null && !value.trim().isEmpty();
+    }
+
+    private static int toInt(Long value) {
+        if (value == null) {
+            return 0;
+        }
+        if (value > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+        return value.intValue();
+    }
+
+    private StatCarbonProjectVo buildProjectStat(Long tenantId) {
+        StatCarbonProjectVo vo = zeroProject();
+        QueryWrapper<CarbonProject> approvedWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            approvedWrapper.eq("tenant_id", tenantId);
+        }
+        approvedWrapper.isNotNull("approval_date");
+        Integer approvedCount = carbonProjectMapper.selectCount(approvedWrapper);
+
+        QueryWrapper<CarbonProject> filingWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            filingWrapper.eq("tenant_id", tenantId);
+        }
+        filingWrapper.isNotNull("record_filing_date");
+        Integer filingCount = carbonProjectMapper.selectCount(filingWrapper);
+
+        QueryWrapper<CarbonProject> singWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            singWrapper.eq("tenant_id", tenantId);
+        }
+        singWrapper.isNotNull("issuing_date");
+        Integer singCount = carbonProjectMapper.selectCount(singWrapper);
+
+        vo.setApprovedCount(approvedCount == null ? 0 : approvedCount);
+        vo.setFilingCount(filingCount == null ? 0 : filingCount);
+        vo.setSingCount(singCount == null ? 0 : singCount);
+        vo.setReductionTotal(BigDecimal.ZERO);
+
+        Page<CarbonProject> page = new Page<>(1, 5);
+        QueryWrapper<CarbonProject> listWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            listWrapper.eq("tenant_id", tenantId);
+        }
+        listWrapper.orderByDesc("id");
+        IPage<CarbonProject> pageResult = carbonProjectMapper.selectPage(page, listWrapper);
+        List<StatCarbonProject> list = new ArrayList<>();
+        for (CarbonProject p : pageResult.getRecords()) {
+            StatCarbonProject item = new StatCarbonProject();
+            item.setProjectName(p.getProjectName());
+            item.setReduction("0");
+            item.setCarbonValuation(BigDecimal.ZERO);
+            item.setDevelopmentState(p.getProjectStatus());
+            item.setTradeState("");
+            list.add(item);
+        }
+        vo.setProjectList(list);
+        return vo;
+    }
+
+    private List<StatCarbonQuotationVo> buildQuotation(Date now, Long tenantId) {
+        QueryWrapper<CarbonProject> totalWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            totalWrapper.eq("tenant_id", tenantId);
+        }
+        Integer totalProjects = carbonProjectMapper.selectCount(totalWrapper);
+
+        QueryWrapper<CarbonProject> approvedWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            approvedWrapper.eq("tenant_id", tenantId);
+        }
+        approvedWrapper.isNotNull("approval_date");
+        Integer approvedCount = carbonProjectMapper.selectCount(approvedWrapper);
+
+        QueryWrapper<CarbonProject> filingWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            filingWrapper.eq("tenant_id", tenantId);
+        }
+        filingWrapper.isNotNull("record_filing_date");
+        Integer filingCount = carbonProjectMapper.selectCount(filingWrapper);
+
+        QueryWrapper<CarbonProject> singWrapper = new QueryWrapper<>();
+        if (tenantId != null) {
+            singWrapper.eq("tenant_id", tenantId);
+        }
+        singWrapper.isNotNull("issuing_date");
+        Integer singCount = carbonProjectMapper.selectCount(singWrapper);
+
+        StatCarbonQuotationVo quotation = new StatCarbonQuotationVo();
+        quotation.setType("VCS");
+        quotation.setStatDate(now);
+        quotation.setCcerProjectCount(totalProjects == null ? 0L : totalProjects.longValue());
+        quotation.setApprovedCount(approvedCount == null ? 0L : approvedCount.longValue());
+        quotation.setFilingCount(filingCount == null ? 0L : filingCount.longValue());
+        quotation.setSingCount(singCount == null ? 0L : singCount.longValue());
+        quotation.setCcerCount(singCount == null ? 0L : singCount.longValue());
+        quotation.setStockCount(filingCount == null ? 0L : filingCount.longValue());
+        quotation.setWrittenOffCount(0L);
+
+        StatCarbonQuotationProjectVo project = new StatCarbonQuotationProjectVo();
+        project.setType("项目");
+        project.setCount(BigDecimal.valueOf(totalProjects == null ? 0L : totalProjects.longValue()));
+        project.setStockCount(BigDecimal.valueOf(filingCount == null ? 0L : filingCount.longValue()));
+        project.setSingCount(BigDecimal.valueOf(singCount == null ? 0L : singCount.longValue()));
+
+        List<StatCarbonQuotationProjectVo> projects = new ArrayList<>();
+        projects.add(project);
+        quotation.setProjects(projects);
+
+        List<StatCarbonQuotationVo> list = new ArrayList<>();
+        list.add(quotation);
+        return list;
     }
 
     private StatAccountVo buildAccountVo(Date now) {
@@ -127,6 +254,7 @@ public class DataPanelController extends BaseController {
     public ApiResult<StatHomeDataVo> home() {
         StatHomeDataVo vo = new StatHomeDataVo();
         Date now = new Date();
+        Long tenantId = HttpContextUtils.getTenantId();
 
         vo.setAssetsIncome(zeroIncome(now));
         vo.setFundIncome(zeroIncome(now));
@@ -137,32 +265,8 @@ public class DataPanelController extends BaseController {
         vo.setMonthSupply(zeroMonth(now));
         vo.setMonthDevelopment(zeroMonth(now));
         vo.setMonthSales(zeroMonth(now));
-        vo.setProjectStat(zeroProject());
-
-        StatCarbonQuotationVo quotation = new StatCarbonQuotationVo();
-        quotation.setType("VCS");
-        quotation.setStatDate(now);
-        quotation.setCcerCount(100L);
-        quotation.setStockCount(60L);
-        quotation.setWrittenOffCount(40L);
-        quotation.setCcerProjectCount(10L);
-        quotation.setApprovedCount(3L);
-        quotation.setFilingCount(3L);
-        quotation.setSingCount(4L);
-
-        StatCarbonQuotationProjectVo project = new StatCarbonQuotationProjectVo();
-        project.setType("默认");
-        project.setSingCount(new BigDecimal("4"));
-        project.setStockCount(new BigDecimal("6"));
-        project.setCount(new BigDecimal("10"));
-
-        List<StatCarbonQuotationProjectVo> projects = new ArrayList<>();
-        projects.add(project);
-        quotation.setProjects(projects);
-
-        List<StatCarbonQuotationVo> quotationList = new ArrayList<>();
-        quotationList.add(quotation);
-        vo.setQuotation(quotationList);
+        vo.setProjectStat(buildProjectStat(tenantId));
+        vo.setQuotation(buildQuotation(now, tenantId));
         return ApiResult.ok(vo);
     }
 

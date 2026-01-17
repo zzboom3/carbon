@@ -20,4 +20,5 @@ import java.io.Serializable;
  */
 public interface CarbonCreditAssetsService extends BaseService<CarbonCreditAssets> {
 
+    CarbonAssetsTotalVo getAssetsTotal();
 }
