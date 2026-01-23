@@ -282,10 +282,11 @@ export default {
       const data = this.buildQuery(page);
       loadCarbonCreditPageList(data)
         .then((res) => {
-          const records = (res && res.data && res.data.records) || [];
+          const paging = (res && res.records) ? res : ((res && res.data && res.data.records) ? res.data : null);
+          const records = (paging && paging.records) || [];
           this.list = records.map(this.normalizeRow);
-          this.total = Number(res.data.total || 0);
-          this.current = Number(res.data.current || page);
+          this.total = Number((paging && paging.total) || 0);
+          this.current = Number((paging && paging.current) || page);
           this.pageCount = Math.ceil(parseInt(this.total, 10) / this.pageSize) || 1;
         })
         .catch(() => {});

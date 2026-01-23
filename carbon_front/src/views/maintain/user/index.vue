@@ -918,7 +918,7 @@ export default {
             this.baseInfo.avatar = "/static/img/icon_accoun_logo.e4db51e4.jpg";
           }
           this.baseInfo.email = res.email || "--";
-          this.baseInfo.famName = res.username || "--";
+          this.baseInfo.famName = res.username || res.accountName || "--";
         })
         .catch((err) => {});
     },
@@ -1192,13 +1192,12 @@ export default {
       if (!this.tranFileList || this.tranFileList.length == 0) {
         return this.$message("请上传账户凭证！");
       }
-      let info = JSON.parse(Cookies.get("JavaInfo"));
       let datas = {
         accountName: this.addUserFrom.accountName, //账户名
         carbonExchangeId: Array.isArray(this.addUserFrom.carbonExchangeId) ? this.addUserFrom.carbonExchangeId[0]
           : this.addUserFrom.carbonExchangeId, //	碳交易所ID
         remarks: this.addUserFrom.remarks, //	备注
-        tenantId: parseInt(info.accountId), //	所属租户
+        tenantId: (this.baseInfo && this.baseInfo.tenantId) ? parseInt(this.baseInfo.tenantId) : undefined, //	所属租户
         accountCredentials: this.tranFileUrl,
       };
       putAddExchangeAccount(datas).then((res) => {

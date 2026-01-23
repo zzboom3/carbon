@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -25,6 +26,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @Api(value = "区块链查询模块", tags = {"区块链查询模块"})
+@ConditionalOnProperty(prefix = "carbon.chainmaker", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ChainCtroller extends BaseController {
 
 

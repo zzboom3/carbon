@@ -41,14 +41,16 @@ public class CarbonMethodologyController extends BaseController {
     @ApiOperation(value = "方法学分页列表", notes = "方法学分页列表")
     public ApiResult<Paging<CarbonMethodology>> getPageList(@Valid @RequestBody(required = false) CarbonMethodologyQueryParam param) {
         CarbonMethodologyQueryParam query = param == null ? new CarbonMethodologyQueryParam() : param;
+        String statusCode = StrUtil.isNotBlank(query.getStatusCode()) ? query.getStatusCode() : query.getStatus();
         Page<CarbonMethodology> page = carbonMethodologyService.page(
                 new Page<>(query.getCurrent(), query.getSize()),
                 Wrappers.lambdaQuery(CarbonMethodology.class)
                         .like(StrUtil.isNotBlank(query.getSearchKey()), CarbonMethodology::getName, query.getSearchKey())
-                        .eq(StrUtil.isNotBlank(query.getStatusCode()), CarbonMethodology::getStatusCode, query.getStatusCode())
+                        .eq(StrUtil.isNotBlank(statusCode), CarbonMethodology::getStatusCode, statusCode)
                         .eq(StrUtil.isNotBlank(query.getFieldCode()), CarbonMethodology::getFieldCode, query.getFieldCode())
                         .eq(StrUtil.isNotBlank(query.getFieldChildCode()), CarbonMethodology::getFieldChildCode, query.getFieldChildCode())
                         .eq(StrUtil.isNotBlank(query.getIndustryCode()), CarbonMethodology::getIndustryCode, query.getIndustryCode())
+                        .eq(StrUtil.isNotBlank(query.getCertificationCriteria()), CarbonMethodology::getCertificationCriteria, query.getCertificationCriteria())
                         .orderByDesc(CarbonMethodology::getId)
         );
         return ApiResult.ok(new Paging<>(page));

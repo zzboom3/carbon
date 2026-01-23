@@ -323,7 +323,7 @@ export default {
     },
     listencomformDialogFormVisible(res) {
       this.comformDialogFormVisible = res;
-      if (res) {
+      if (!res) {
         this.$router.push("/trade/offer");
       }
     },

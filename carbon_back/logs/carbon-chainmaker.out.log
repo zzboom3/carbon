@@ -1,0 +1,61 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.2.RELEASE)
+
+2026-01-23 07:22:16.643  INFO 28536 --- [           main] c.c.chainmaker.ChainMakerApplication     : The following profiles are active: dev
+2026-01-23 07:22:19.044  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-23 07:22:19.048  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-23 07:22:19.085  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27ms. Found 0 Elasticsearch repository interfaces.
+2026-01-23 07:22:19.093  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-23 07:22:19.095  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive Elasticsearch repositories in DEFAULT mode.
+2026-01-23 07:22:19.105  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 0 Reactive Elasticsearch repository interfaces.
+2026-01-23 07:22:19.124  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2026-01-23 07:22:19.127  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-01-23 07:22:19.168  INFO 28536 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 0 Redis repository interfaces.
+2026-01-23 07:22:19.335  WARN 28536 --- [           main] o.s.boot.actuate.endpoint.EndpointId     : Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2026-01-23 07:22:19.527  WARN 28536 --- [           main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.carbon.*.mapper]' package. Please check your configuration.
+2026-01-23 07:22:19.828  INFO 28536 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=426a1283-9495-313c-b02b-443e3521672a
+2026-01-23 07:22:19.884  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.assets.api.AssetsServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:19.887  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.auth.api.LoginCheckApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:19.891  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.chainmaker.api.ChainMakerServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:19.895  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.BmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:19.898  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.mall.api.CmallApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:19.902  INFO 28536 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'com.carbon.domain.system.api.SystemServiceApi' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-01-23 07:22:22.396  INFO 28536 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9007 (http)
+2026-01-23 07:22:22.430  INFO 28536 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-23 07:22:22.432  INFO 28536 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2026-01-23 07:22:23.441  INFO 28536 --- [           main] o.a.c.c.C.[.[localhost].[/chaninmaker]   : Initializing Spring embedded WebApplicationContext
+2026-01-23 07:22:23.442  INFO 28536 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6738 ms
+2026-01-23 07:22:37.334  INFO 28536 --- [           main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2026-01-23 07:22:40.240  INFO 28536 --- [           main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2026-01-23 07:22:40.708  INFO 28536 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2026-01-23 07:22:41.404  INFO 28536 --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2026-01-23 07:22:41.670  WARN 28536 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-23 07:22:41.677  INFO 28536 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-23 07:22:41.692  WARN 28536 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2026-01-23 07:22:41.693  INFO 28536 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2026-01-23 07:22:42.443  INFO 28536 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2026-01-23 07:22:43.275  INFO 28536 --- [           main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'Nacos-Watch-Task-Scheduler'
+ _ _   |_  _ _|_. ___ _ |    _ 
+| | |\/|_)(_| | |_\  |_)||_|_\ 
+     /               |         
+                        3.4.0 
+2026-01-23 07:22:45.259  WARN 28536 --- [           main] o.a.r.s.a.RocketMQAutoConfiguration      : The necessary spring property 'rocketmq.name-server' is not defined, all rockertmq beans creation are skipped!
+2026-01-23 07:22:46.979  WARN 28536 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.geo.Point to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-23 07:22:46.983  WARN 28536 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.geo.Point as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-23 07:22:46.985  WARN 28536 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class org.springframework.data.elasticsearch.core.geo.GeoPoint to interface java.util.Map as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-23 07:22:46.987  WARN 28536 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from interface java.util.Map to class org.springframework.data.elasticsearch.core.geo.GeoPoint as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2026-01-23 07:22:47.462  INFO 28536 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Spring Data Elasticsearch: 4.0.2.RELEASE
+2026-01-23 07:22:47.464  INFO 28536 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client in build: 7.6.2
+2026-01-23 07:22:47.465  INFO 28536 --- [           main] o.s.d.elasticsearch.support.VersionInfo  : Version Elasticsearch Client used: 7.6.2
+2026-01-23 07:22:51.691  INFO 28536 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9007 (http) with context path '/chaninmaker'
+2026-01-23 07:22:52.265  INFO 28536 --- [           main] c.a.c.n.registry.NacosServiceRegistry    : nacos registry, DEFAULT_GROUP carbon-chaninmaker 192.168.100.1:9007 register finished
+2026-01-23 07:22:56.011  INFO 28536 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Documentation plugins bootstrapped
+2026-01-23 07:22:56.023  INFO 28536 --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2026-01-23 07:22:56.433  INFO 28536 --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2026-01-23 07:22:57.757  INFO 28536 --- [           main] c.c.chainmaker.ChainMakerApplication     : Started ChainMakerApplication in 47.883 seconds (JVM running for 50.59)

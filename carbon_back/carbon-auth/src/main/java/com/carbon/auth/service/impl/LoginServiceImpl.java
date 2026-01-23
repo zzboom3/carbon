@@ -98,7 +98,7 @@ public class LoginServiceImpl implements LoginService {
 		if (AccountConstant.ACCOUNT_STATUS_DISABLE.equals(account.getAccountStatus())) {
 			throw new CommonBizException(ExpCodeEnum.SYS_ACCOUNT_DISABLE);
 		}
-		if (AccountConstant.ACCOUNT_STATUS_NO_OPENED.equals(account.getAccountStatus())) {
+		if (!permitAll && AccountConstant.ACCOUNT_STATUS_NO_OPENED.equals(account.getAccountStatus())) {
 			throw new CommonBizException(ExpCodeEnum.SYS_ACCOUNT_NO_OPENED);
 		}
 
@@ -133,7 +133,7 @@ public class LoginServiceImpl implements LoginService {
 		accountParam.setPassword(param.getPassword());
 		accountParam.setPhone(param.getPhone());
 		accountParam.setEmail(param.getEmail());
-		accountParam.setAccountStatus(AccountConstant.ACCOUNT_STATUS_NO_OPENED);
+		accountParam.setAccountStatus(permitAll ? AccountConstant.ACCOUNT_STATUS_ENABLE : AccountConstant.ACCOUNT_STATUS_NO_OPENED);
 		accountParam.setAccountType("0380000001");//试用账户
 		accountParam.setProductVersion("0400000001");//试用版
 		accountParam.setRoleIds(CollUtil.newArrayList(9L));//角色ID
@@ -143,29 +143,33 @@ public class LoginServiceImpl implements LoginService {
 			throw new CommonBizException(result.getMsg());
 		}
 		//发送MQ消息
-		OpenRegisterAccount registerAccount = BeanUtil.fillBean(new OpenRegisterAccount(), new ValueProvider<String>() {
-			@Override
-			public Object value(String s, Type type) {
-				return "";
-			}
-			@Override
-			public boolean containsKey(String s) {
-				return true;
-			}
-		}, CopyOptions.create());//创建空对象，null转""
+		try {
+			OpenRegisterAccount registerAccount = BeanUtil.fillBean(new OpenRegisterAccount(), new ValueProvider<String>() {
+				@Override
+				public Object value(String s, Type type) {
+					return "";
+				}
+				@Override
+				public boolean containsKey(String s) {
+					return true;
+				}
+			}, CopyOptions.create());//创建空对象，null转""
 
-		registerAccount.setAccountName(param.getAccountName());
-		registerAccount.setProductVersion("试用版");
-		registerAccount.setContactNumber(param.getPhone());
-		registerAccount.setAccountState("未开户");
+			registerAccount.setAccountName(param.getAccountName());
+			registerAccount.setProductVersion("试用版");
+			registerAccount.setContactNumber(param.getPhone());
+			registerAccount.setAccountState(permitAll ? "已开户" : "未开户");
 
-		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		registerAccount.setRegistrationTime(dtf.format(now));
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			registerAccount.setRegistrationTime(dtf.format(now));
 
-        Message<OpenRegisterAccount> msg= MessageBuilder
-                .withPayload(BeanUtil.copyProperties(registerAccount,OpenRegisterAccount.class)).build();
-        mqTemplate.syncSend(RocketMqName.OpenRegisterAccount_MSG,msg,3000, RocketDelayLevelConstant.SECOND10);
+			Message<OpenRegisterAccount> msg= MessageBuilder
+					.withPayload(BeanUtil.copyProperties(registerAccount,OpenRegisterAccount.class)).build();
+			mqTemplate.syncSend(RocketMqName.OpenRegisterAccount_MSG,msg,3000, RocketDelayLevelConstant.SECOND10);
+		} catch (Exception e) {
+			log.error("register send mq error", e);
+		}
 	}
 
 	@Override
@@ -255,6 +259,12 @@ public class LoginServiceImpl implements LoginService {
 		final String normalizedUrlFinal = normalizedUrl;
 
 		if (normalizedUrlFinal.startsWith("/sysMenu/userMenus")) {
+			return ApiResult.ok();
+		}
+		if (normalizedUrlFinal.startsWith("/ai/") || checkUrl.startsWith("/ai/")) {
+			return ApiResult.ok();
+		}
+		if (normalizedUrlFinal.startsWith("/carbonTradePrice/") || checkUrl.startsWith("/trade/carbonTradePrice/")) {
 			return ApiResult.ok();
 		}
 

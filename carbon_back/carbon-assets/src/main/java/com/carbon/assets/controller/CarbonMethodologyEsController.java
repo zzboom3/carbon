@@ -90,7 +90,7 @@ public class CarbonMethodologyEsController extends BaseController {
     }
 
     private Map<String, Object> getSearchResMap(Page<CarbonMethodologyContent> methodologies, CarbonMethodologyQueryParam param, boolean needSlice) {
-        String certificationCriteria = param.getCertificationCriteria() == null ? null : "00" + param.getCertificationCriteria();
+        String certificationCriteria = param.getCertificationCriteria();
         String fieldCode = param.getFieldCode();
         String industryCode = param.getIndustryCode();
         String statusCode = param.getStatusCode();

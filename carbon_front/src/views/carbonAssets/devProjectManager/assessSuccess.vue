@@ -41,11 +41,11 @@
         </div>
         <div style="height: 30px"></div>
         <div class="scanCode">
-          <div class="scanImg"></div>
+          <div class="scanImg" :style="{ backgroundImage: 'url(' + qrUrl + ')' }"></div>
         </div>
         <div class="scanTip">扫码关注</div>
         <div class="scanCode" style="margin-left: 30px">
-          <div class="scanImg"></div>
+          <div class="scanImg" :style="{ backgroundImage: 'url(' + qrUrl + ')' }"></div>
         </div>
         <div class="scanTip">扫码评估</div>
       </div>
@@ -75,10 +75,11 @@
 
 <script>
 import { getProjectAreaDict } from "@/config/dictHelper";
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 export default {
   name: "AssessSuccess",
   data() {
-    return {};
+    return { qrUrl: getWeChatQrUrl() };
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
@@ -430,7 +431,6 @@ export default {
 }
 
 .scanImg {
-  background-image: url("../../../assets/imgs/qrcode.png");
   width: 140px;
   height: 140px;
   background-size: 100% 100%;

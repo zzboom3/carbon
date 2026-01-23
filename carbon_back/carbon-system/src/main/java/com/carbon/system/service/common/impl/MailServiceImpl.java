@@ -1,10 +1,13 @@
 package com.carbon.system.service.common.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.carbon.common.enums.ExpCodeEnum;
+import com.carbon.common.exception.CommonBizException;
 import com.carbon.system.service.common.MailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -28,9 +31,17 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private MailProperties mailProperties;
 
+    private void validateMailConfigured() {
+        if (StrUtil.isBlank(this.mailProperties.getHost())
+                || StrUtil.isBlank(this.mailProperties.getUsername())
+                || StrUtil.isBlank(this.mailProperties.getPassword())) {
+            throw new CommonBizException(ExpCodeEnum.OPERATE_FAIL_ERROR, "邮件服务未配置");
+        }
+    }
 
     @Override
     public void simple(String toEmail, String subject, String text) {
+        validateMailConfigured();
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(this.mailProperties.getUsername());
         String[] toArr = StrUtil.split(toEmail, ",");
@@ -38,12 +49,18 @@ public class MailServiceImpl implements MailService {
         message.setTo(toArr);
         message.setSubject(subject);
         message.setText(text);
-        this.javaMailSender.send(message);
+        try {
+            this.javaMailSender.send(message);
+        } catch (MailException e) {
+            log.error("发送邮件失败 to={} subject={}", toEmail, subject, e);
+            throw new CommonBizException(ExpCodeEnum.OPERATE_FAIL_ERROR, "邮件发送失败");
+        }
     }
 
 
     @Override
     public void html(String toEmail, String subject, String text) throws MessagingException {
+        validateMailConfigured();
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(message);
 
@@ -53,12 +70,18 @@ public class MailServiceImpl implements MailService {
         messageHelper.setSubject(subject);
         messageHelper.setText(text, true);
 
-        this.javaMailSender.send(message);
+        try {
+            this.javaMailSender.send(message);
+        } catch (MailException e) {
+            log.error("发送邮件失败 to={} subject={}", toEmail, subject, e);
+            throw new CommonBizException(ExpCodeEnum.OPERATE_FAIL_ERROR, "邮件发送失败");
+        }
     }
 
 
     @Override
     public void attach(String toEmail, String cc, String subject, String text, String attachmentFilename, File file) throws MessagingException {
+        validateMailConfigured();
         MimeMessage message = this.javaMailSender.createMimeMessage();
         // 第二个参数表示是否开启multipart模式
         MimeMessageHelper messageHelper = new MimeMessageHelper(message, true);
@@ -73,9 +96,14 @@ public class MailServiceImpl implements MailService {
         try {
             messageHelper.addAttachment(MimeUtility.encodeWord(attachmentFilename, "utf-8", "B"), file);
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.error("附件文件名编码失败 filename={}", attachmentFilename, e);
         }
-        this.javaMailSender.send(message);
+        try {
+            this.javaMailSender.send(message);
+        } catch (MailException e) {
+            log.error("发送邮件失败 to={} subject={}", toEmail, subject, e);
+            throw new CommonBizException(ExpCodeEnum.OPERATE_FAIL_ERROR, "邮件发送失败");
+        }
     }
 
 }

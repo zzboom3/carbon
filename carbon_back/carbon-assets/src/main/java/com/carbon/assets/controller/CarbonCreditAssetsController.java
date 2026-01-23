@@ -14,6 +14,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.carbon.assets.param.CarbonCreditAssetsQueryParam;
 import com.carbon.assets.service.CarbonCreditAssetsService;
+import com.carbon.assets.vo.CarbonCreditAssetsQueryVo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -45,22 +46,14 @@ public class CarbonCreditAssetsController extends BaseController {
 
     @PostMapping("/getPageList")
     @ApiOperation(value = "碳信用分页列表", notes = "碳信用分页列表")
-    public ApiResult<Paging<CarbonCreditAssets>> getPageList(@Valid @RequestBody(required = false) CarbonCreditAssetsQueryParam param) {
-        CarbonCreditAssetsQueryParam query = param == null ? new CarbonCreditAssetsQueryParam() : param;
-        Page<CarbonCreditAssets> page = carbonCreditAssetsService.page(
-                new Page<>(query.getCurrent(), query.getSize()),
-                Wrappers.lambdaQuery(CarbonCreditAssets.class)
-                        .eq(StrUtil.isNotBlank(query.getAssetsStatus()), CarbonCreditAssets::getAssetsStatus, query.getAssetsStatus())
-                        .eq(StrUtil.isNotBlank(query.getTransactionStatus()), CarbonCreditAssets::getTransactionStatus, query.getTransactionStatus())
-                        .orderByDesc(CarbonCreditAssets::getId)
-        );
-        return ApiResult.ok(new Paging<>(page));
+    public ApiResult<Paging<CarbonCreditAssetsQueryVo>> getPageList(@Valid @RequestBody(required = false) CarbonCreditAssetsQueryParam param) {
+        return ApiResult.ok(carbonCreditAssetsService.getCarbonCreditAssetsPageList(param));
     }
 
     @GetMapping("/info/{id}")
     @ApiOperation(value = "碳信用详情", notes = "碳信用详情")
-    public ApiResult<CarbonCreditAssets> info(@PathVariable("id") Long id) {
-        return ApiResult.ok(carbonCreditAssetsService.getById(id));
+    public ApiResult<CarbonCreditAssetsQueryVo> info(@PathVariable("id") Long id) {
+        return ApiResult.ok(carbonCreditAssetsService.getCarbonCreditAssetsDetail(id));
     }
 
     @PostMapping("/add")

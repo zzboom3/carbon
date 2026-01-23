@@ -2,4 +2,124 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.carbon.assets.mapper.CarbonCreditAssetsMapper">
 
+    <select id="getCarbonCreditAssetsPageList" resultType="com.carbon.assets.vo.CarbonCreditAssetsQueryVo">
+        SELECT
+            cca.id,
+            cca.carbon_project_id AS carbonProjectId,
+            COALESCE(cp.project_name, cca.carbon_project_name) AS projectName,
+            cp.project_introduction AS projectIntroduction,
+            cp.carbon_methodology AS carbonMethodology,
+            COALESCE(cm.name, cca.carbon_methodology) AS carbonMethodologyName,
+            cm.certification_criteria AS certificationCriteria,
+            cp.project_scope_code AS projectScopeCode,
+            cp.project_type_code AS projectScopeTypeCode,
+            cp.project_type AS projectScopeType,
+            cm.industry_code AS industryCode,
+            cca.carbon_exchange_id AS carbonExchangeId,
+            ce.name AS carbonExchangeName,
+            ce.website AS carbonExchangeWebsite,
+            cca.certified_agency AS certifiedAgency,
+            cca.issuing_agency AS issuingAgency,
+            cca.issuing_certificates AS issuingCertificates,
+            cca.issuing_certificates_file_name AS issuingCertificatesFileName,
+            cca.issuing_date AS issuingDate,
+            cca.expiry_date AS expiryDate,
+            cca.assets_status AS assetsStatus,
+            cca.transaction_status AS transactionStatus,
+            cca.buy_total_price AS buyTotalPrice,
+            cca.buy_unit_price AS buyUnitPrice,
+            cca.buy_date AS buyDate,
+            cca.buy_certificate AS buyCertificate,
+            cca.buy_certificate_file_name AS buyCertificateFileName,
+            cca.total,
+            cca.available_amount AS availableAmount,
+            cca.frozen_amount AS frozenAmount,
+            cca.locked_amount AS lockedAmount,
+            cca.valuation,
+            st.tenant_name AS tenantName,
+            cca.tenant_id AS tenantId
+        FROM carbon_credit_assets cca
+        LEFT JOIN carbon_project cp ON cp.id = cca.carbon_project_id
+        LEFT JOIN carbon_methodology cm ON cm.dict_code = cp.carbon_methodology
+        LEFT JOIN carbon_exchange ce ON ce.id = cca.carbon_exchange_id
+        LEFT JOIN sys_tenant st ON st.id = cca.tenant_id
+        <where>
+            <if test="param != null">
+                <if test="param.assetsStatus != null and param.assetsStatus != ''">
+                    AND cca.assets_status = #{param.assetsStatus}
+                </if>
+                <if test="param.transactionStatus != null and param.transactionStatus != ''">
+                    AND cca.transaction_status = #{param.transactionStatus}
+                </if>
+                <if test="param.issuingDateStart != null">
+                    AND cca.issuing_date <![CDATA[>=]]> #{param.issuingDateStart}
+                </if>
+                <if test="param.issuingDateEnd != null">
+                    AND cca.issuing_date <![CDATA[<=]]> #{param.issuingDateEnd}
+                </if>
+                <if test="param.projectName != null and param.projectName != ''">
+                    AND cp.project_name LIKE CONCAT('%', #{param.projectName}, '%')
+                </if>
+                <if test="param.methodName != null and param.methodName != ''">
+                    AND cm.name LIKE CONCAT('%', #{param.methodName}, '%')
+                </if>
+                <if test="param.certificationCriteria != null and param.certificationCriteria != ''">
+                    AND cm.certification_criteria = #{param.certificationCriteria}
+                </if>
+                <if test="param.industryCode != null and param.industryCode != ''">
+                    AND cm.industry_code = #{param.industryCode}
+                </if>
+                <if test="param.projectScopeCode != null and param.projectScopeCode != ''">
+                    AND cp.project_scope_code = #{param.projectScopeCode}
+                </if>
+            </if>
+        </where>
+        ORDER BY cca.id DESC
+    </select>
+
+    <select id="getCarbonCreditAssetsById" resultType="com.carbon.assets.vo.CarbonCreditAssetsQueryVo">
+        SELECT
+            cca.id,
+            cca.carbon_project_id AS carbonProjectId,
+            COALESCE(cp.project_name, cca.carbon_project_name) AS projectName,
+            cp.project_introduction AS projectIntroduction,
+            cp.carbon_methodology AS carbonMethodology,
+            COALESCE(cm.name, cca.carbon_methodology) AS carbonMethodologyName,
+            cm.certification_criteria AS certificationCriteria,
+            cp.project_scope_code AS projectScopeCode,
+            cp.project_type_code AS projectScopeTypeCode,
+            cp.project_type AS projectScopeType,
+            cm.industry_code AS industryCode,
+            cca.carbon_exchange_id AS carbonExchangeId,
+            ce.name AS carbonExchangeName,
+            ce.website AS carbonExchangeWebsite,
+            cca.certified_agency AS certifiedAgency,
+            cca.issuing_agency AS issuingAgency,
+            cca.issuing_certificates AS issuingCertificates,
+            cca.issuing_certificates_file_name AS issuingCertificatesFileName,
+            cca.issuing_date AS issuingDate,
+            cca.expiry_date AS expiryDate,
+            cca.assets_status AS assetsStatus,
+            cca.transaction_status AS transactionStatus,
+            cca.buy_total_price AS buyTotalPrice,
+            cca.buy_unit_price AS buyUnitPrice,
+            cca.buy_date AS buyDate,
+            cca.buy_certificate AS buyCertificate,
+            cca.buy_certificate_file_name AS buyCertificateFileName,
+            cca.total,
+            cca.available_amount AS availableAmount,
+            cca.frozen_amount AS frozenAmount,
+            cca.locked_amount AS lockedAmount,
+            cca.valuation,
+            st.tenant_name AS tenantName,
+            cca.tenant_id AS tenantId
+        FROM carbon_credit_assets cca
+        LEFT JOIN carbon_project cp ON cp.id = cca.carbon_project_id
+        LEFT JOIN carbon_methodology cm ON cm.dict_code = cp.carbon_methodology
+        LEFT JOIN carbon_exchange ce ON ce.id = cca.carbon_exchange_id
+        LEFT JOIN sys_tenant st ON st.id = cca.tenant_id
+        WHERE cca.id = #{id}
+        LIMIT 1
+    </select>
+
 </mapper>

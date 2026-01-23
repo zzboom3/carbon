@@ -166,6 +166,7 @@ const actions = {
       removeToken()
       resetRouter()
       
+      let apiBaseURL = "";
       if(window.localStorage.getItem("apiBaseURL")){
         apiBaseURL =  window.localStorage.getItem("apiBaseURL")
       }

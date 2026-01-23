@@ -2,6 +2,7 @@ package com.carbon.assets.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.carbon.domain.common.annotation.Dict;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class CarbonMethodology extends EsBaseEntity {
     private String name;
 
     @ApiModelProperty(value = "方法学状态（字典）")
+    @Dict(dictCode = "045")
     private String statusCode;
 
     @ApiModelProperty(value = "方法学类型（字典）")
@@ -42,6 +44,7 @@ public class CarbonMethodology extends EsBaseEntity {
     private String dictCode;
 
     @ApiModelProperty(value = "核证标准（字典：007）")
+    @Dict(dictCode = "007")
     private String certificationCriteria;
 
     @ApiModelProperty(value = "方法学原文件url")
@@ -57,12 +60,15 @@ public class CarbonMethodology extends EsBaseEntity {
     private String filingBatch;
 
     @ApiModelProperty(value = "领域编码（字典：003）")
+    @Dict(dictCode = "003")
     private String fieldCode;
 
     @ApiModelProperty(value = "子领域编码（字典：004）")
+    @Dict(dictCode = "004")
     private String fieldChildCode;
 
     @ApiModelProperty(value = "行业编码（字典：002）")
+    @Dict(dictCode = "002")
     private String industryCode;
 
 //    @ApiModelProperty(value = "行业名称")

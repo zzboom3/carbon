@@ -42,6 +42,6 @@ public class CarbonMethodologyQueryParam extends QueryParam {
     private String industryCode;
 
     @ApiModelProperty(value = "核证标准")
-    private Integer certificationCriteria;
+    private String certificationCriteria;
 
 }

@@ -215,7 +215,7 @@
 </template>
 <script>
 import {
-  getEscarbonMethodologyByKeyword,
+  loadMethodList,
   addCarbonMethodology,
   updateCarbonMethodology,
   synContentCarbonMethodology,
@@ -399,14 +399,12 @@ export default {
         });
         data.createdTime = null;
         updateCarbonMethodology(data)
-          .then((res) => {
-            if (res && res.code === 200) {
-              this.$message.success("操作成功！");
-              this.addMethodFormVisible = false;
-              this.getList(this.current);
-              if (this.methodForm.wordUrl) {
-                this.syncContentCarbonMethodology(this.methodForm);
-              }
+          .then(() => {
+            this.$message.success("操作成功！");
+            this.addMethodFormVisible = false;
+            this.getList(this.current);
+            if (this.methodForm.wordUrl) {
+              this.syncContentCarbonMethodology(this.methodForm);
             }
           })
           .catch((err) => {
@@ -415,12 +413,10 @@ export default {
       } else {
         delete data.id;
         addCarbonMethodology(data)
-          .then((res) => {
-            if (res && res.code === 200) {
-              this.$message.success("添加成功！");
-              this.addMethodFormVisible = false;
-              this.getList(1);
-            }
+          .then(() => {
+            this.$message.success("添加成功！");
+            this.addMethodFormVisible = false;
+            this.getList(1);
           })
           .catch((err) => {
             this.$message.error((err && err.msg) || "添加失败");
@@ -447,20 +443,19 @@ export default {
     getList(page) {
       this.current = page;
       const data = this.buildQueryData();
-      getEscarbonMethodologyByKeyword(data)
+      loadMethodList(data)
         .then((res) => {
-          const payload = res && res.data ? res.data : {};
-          const rows = (payload && payload.data) || [];
+          const rows = (res && res.records) || [];
           this.list = rows.map((v) => {
-            const row = { ...v };
+            const row = { ...(v || {}) };
             row.statusName = this.statusName(row.statusCode);
             Object.keys(row).forEach((k) => {
               if (!row[k] || row[k] === " ") row[k] = "--";
             });
             return row;
           });
-          this.total = parseInt(payload.total || 0, 10);
-          this.current = Number(payload.current || page);
+          this.total = parseInt((res && res.total) || 0, 10);
+          this.current = Number((res && res.current) || page);
           this.pageCount = Math.ceil(this.total / this.pageSize) || 1;
         })
         .catch(() => {});

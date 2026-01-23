@@ -467,7 +467,7 @@ export default {
         industryCode: (this.selectedIndustry && this.selectedIndustry[0]) || undefined,
         certificationCriteria:
           (this.selectedCertification && this.selectedCertification[0]) || undefined,
-        status: "0450000002",
+        statusCode: "0450000002",
       };
       loadMethodList(data)
         .then((res) => {

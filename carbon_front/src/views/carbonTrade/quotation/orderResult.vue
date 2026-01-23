@@ -9,12 +9,13 @@
       </div>
       <div class="bottomDiv">
         <a class="bottomTxt cursor-mi">{{ mybottomTxt }}</a>
-        <img class="image marleft30px verticalCenter" src="@/assets/icon/icon_qrcode.jpeg" />
+        <img class="image marleft30px verticalCenter" :src="myimg || qrUrl" />
       </div>
     </div>
   </el-dialog>
 </template>
 <script>
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 export default {
   name: "companyPackage",
   props: {
@@ -31,6 +32,7 @@ export default {
       mycontent: "",
       mybottomTxt: "",
       myimg: "",
+      qrUrl: getWeChatQrUrl(),
     };
   },
   watch: {
@@ -63,6 +65,7 @@ export default {
       this.show = false;
     },
     clickOk() {
+      this.$emit("changeComfromDialogVisible", false);
       this.show = false;
     },
   },

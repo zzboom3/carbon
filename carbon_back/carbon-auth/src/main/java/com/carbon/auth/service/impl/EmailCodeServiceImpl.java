@@ -26,12 +26,12 @@ public class EmailCodeServiceImpl implements EmailCodeService {
 
     @Override
     public void sendRegisterCode(String email) {
-        sendCode(email, RedisKeyName.EMAIL_REGISTER_KEY, "注册验证码", "注册验证码：%s（5分钟内有效）");
+        sendCode(email, RedisKeyName.EMAIL_REGISTER_KEY, "注册验证码", "注册验证码：%s（15分钟内有效）");
     }
 
     @Override
     public void sendForgotPasswordCode(String email) {
-        sendCode(email, RedisKeyName.EMAIL_FORGOT_PASSWORD_KEY, "重置密码验证码", "重置密码验证码：%s（5分钟内有效）");
+        sendCode(email, RedisKeyName.EMAIL_FORGOT_PASSWORD_KEY, "重置密码验证码", "重置密码验证码：%s（15分钟内有效）");
     }
 
     @Override
@@ -56,12 +56,13 @@ public class EmailCodeServiceImpl implements EmailCodeService {
                 || "xxxxxx".equalsIgnoreCase(StrUtil.trim(mailProperties.getPassword()))) {
             throw new CommonBizException("邮件服务未配置");
         }
+
         String rateKey = RedisKeyName.SMS_RATE_LIMIT_KEY + keyPrefix + email;
         if (StrUtil.isNotBlank(redisService.get(rateKey))) {
             throw new CommonBizException("发送过于频繁，请稍后再试");
         }
         String code = RandomUtil.randomNumbers(6);
-        redisService.setEx(keyPrefix + email, code, 300, TimeUnit.SECONDS);
+        redisService.setEx(keyPrefix + email, code, 900, TimeUnit.SECONDS);
         redisService.setEx(rateKey, "1", 60, TimeUnit.SECONDS);
 
         SimpleMailMessage msg = new SimpleMailMessage();

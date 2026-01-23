@@ -43,7 +43,7 @@
         </el-form-item>
 
         <!-- 手机号 -->
-        <!-- <el-form-item prop="mobile">
+        <el-form-item prop="mobile">
           <div class="input-group">
             <i class="el-icon-mobile-phone input-icon"></i>
             <el-input 
@@ -53,7 +53,7 @@
               class="nature-input">
             </el-input>
           </div>
-        </el-form-item> -->
+        </el-form-item>
 
         <!-- 验证码 -->
         <el-form-item prop="verificationCode">

@@ -16,8 +16,6 @@
       <right-panel v-if="showSettings">
         <settings />
       </right-panel>
-      <!-- 注入 AI 助手 -->
-      <ai-assistant />
     </div>
   </div>
 </template>
@@ -25,7 +23,6 @@
 <script>
 import RightPanel from "@/components/RightPanel";
 import { AppMain, Navbar, Settings, Sidebar, TagsView } from "./components";
-import AiAssistant from "@/components/AiAssistant"; // 引入 AI 助手
 import ResizeMixin from "./mixin/ResizeHandler";
 import { mapState } from "vuex";
 // import TopBar from '../views/topbar/TopBar.vue'
@@ -39,7 +36,6 @@ export default {
     Settings,
     Sidebar,
     TagsView,
-    AiAssistant // 注册组件
     // TopBar
   },
   mixins: [ResizeMixin],

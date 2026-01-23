@@ -15,7 +15,7 @@
           </p>
           <div class="content">
             <div>
-              <img class="content_img" src="@/assets/imgs/qrcode.png" alt="" />
+              <img class="content_img" :src="qrUrl" alt="" />
             </div>
             <div>
               <img
@@ -42,11 +42,12 @@
 import { logout } from "@/api/user";
 import Cookies from 'js-cookie';
 import {getAccoutBaseInfo} from "@/api/tenant";
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 export default {
   name: "loginServiceTips",
 
   data() {
-    return {};
+    return { qrUrl: getWeChatQrUrl() };
   },
   computed: {
     message() {

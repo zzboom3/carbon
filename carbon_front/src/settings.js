@@ -1,10 +1,16 @@
 // 请求接口地址 如果没有配置自动获取当前网址路径
 const VUE_APP_API_URL = process.env.VUE_APP_BASE_API || `${location.origin}/api/`;
+const AI_ASSISTANT_ENABLED_RAW = String(process.env.VUE_APP_ENABLE_AI_ASSISTANT || '').trim().toLowerCase()
+const AI_ASSISTANT_ENABLED = AI_ASSISTANT_ENABLED_RAW
+  ? (AI_ASSISTANT_ENABLED_RAW === 'true' || AI_ASSISTANT_ENABLED_RAW === '1' || AI_ASSISTANT_ENABLED_RAW === 'yes')
+  : true
 module.exports = {
   // 接口请求地址
   apiBaseURL: VUE_APP_API_URL,
 
   title: '碳信使资产管理平台',
+
+  enableAiAssistant: AI_ASSISTANT_ENABLED,
 
   /**
    * @type {boolean} true | false

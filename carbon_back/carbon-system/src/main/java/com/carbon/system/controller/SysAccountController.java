@@ -15,8 +15,13 @@ import com.carbon.domain.system.vo.SysAccountModelVo;
 import com.carbon.system.entity.SysAccount;
 import com.carbon.system.param.*;
 import com.carbon.system.vo.SysAccountQueryVo;
+import com.carbon.system.vo.SysAccountRoleVo;
 import com.carbon.system.common.BaseController;
+import com.carbon.system.entity.SysAccountRole;
+import com.carbon.system.entity.SysRole;
 import com.carbon.system.service.SysAccountService;
+import com.carbon.system.service.SysAccountRoleService;
+import com.carbon.system.service.SysRoleService;
 import com.carbon.system.service.common.MailService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +31,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -47,6 +53,12 @@ public class SysAccountController extends BaseController {
 
     @Resource
     private SysAccountService sysAccountService;
+
+    @Resource
+    private SysAccountRoleService sysAccountRoleService;
+
+    @Resource
+    private SysRoleService sysRoleService;
 
     @Resource
     private RedisService redisService;
@@ -81,6 +93,23 @@ public class SysAccountController extends BaseController {
         }
         SysAccountQueryVo vo = new SysAccountQueryVo();
         BeanUtil.copyProperties(account, vo);
+        List<Long> roleIds = sysAccountRoleService.lambdaQuery()
+                .select(SysAccountRole::getRoleId)
+                .eq(SysAccountRole::getAccountId, id)
+                .list()
+                .stream()
+                .map(SysAccountRole::getRoleId)
+                .distinct()
+                .collect(Collectors.toList());
+        if (!roleIds.isEmpty()) {
+            List<SysRole> roles = sysRoleService.listByIds(roleIds);
+            SysAccountRoleVo roleVo = new SysAccountRoleVo();
+            roleVo.setAccountId(id);
+            roleVo.setRoleIds(roleIds);
+            roleVo.setRoleNames(roles == null ? new ArrayList<>() : roles.stream().map(SysRole::getRoleName).collect(Collectors.toList()));
+            roleVo.setRoleCodes(roles == null ? new ArrayList<>() : roles.stream().map(SysRole::getRoleCode).collect(Collectors.toList()));
+            vo.setAccountRole(roleVo);
+        }
         return ApiResult.ok(vo);
     }
 
@@ -179,10 +208,10 @@ public class SysAccountController extends BaseController {
             return ApiResult.fail("发送过于频繁，请稍后再试");
         }
         String code = RandomUtil.randomNumbers(6);
-        redisService.setEx(RedisKeyName.EMAIL_UPDATE_PHONE_KEY + id, code, 300, TimeUnit.SECONDS);
+        redisService.setEx(RedisKeyName.EMAIL_UPDATE_PHONE_KEY + id, code, 900, TimeUnit.SECONDS);
         redisService.setEx(rateKey, "1", 60, TimeUnit.SECONDS);
         String subject = "修改手机号验证码";
-        String text = "验证码：" + code + "（5分钟内有效）";
+        String text = "验证码：" + code + "（15分钟内有效）";
         mailService.simple(account.getEmail(), subject, text);
         return ApiResult.ok(true);
     }
@@ -213,10 +242,10 @@ public class SysAccountController extends BaseController {
             return ApiResult.fail("发送过于频繁，请稍后再试");
         }
         String code = RandomUtil.randomNumbers(6);
-        redisService.setEx(RedisKeyName.EMAIL_BIND_KEY + param.getEmail(), code, 300, TimeUnit.SECONDS);
+        redisService.setEx(RedisKeyName.EMAIL_BIND_KEY + param.getEmail(), code, 900, TimeUnit.SECONDS);
         redisService.setEx(rateKey, "1", 60, TimeUnit.SECONDS);
         String subject = "邮箱验证码";
-        String text = "验证码：" + code + "（5分钟内有效）";
+        String text = "验证码：" + code + "（15分钟内有效）";
         mailService.simple(param.getEmail(), subject, text);
         return ApiResult.ok(true);
     }

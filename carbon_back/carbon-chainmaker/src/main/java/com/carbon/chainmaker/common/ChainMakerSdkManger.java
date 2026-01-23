@@ -19,6 +19,7 @@ import org.chainmaker.sdk.ResponseInfo;
 import org.chainmaker.sdk.crypto.ChainMakerCryptoSuiteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -38,6 +39,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Component
+@ConditionalOnProperty(prefix = "carbon.chainmaker", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ChainMakerSdkManger {
 
     private final static String CONTRACT_ARGS_ISSUE_LIMIT = "issue_limit";

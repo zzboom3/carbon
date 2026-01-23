@@ -1,14 +1,23 @@
 <template>
   <div id="app">
     <router-view />
+    <ai-assistant v-if="enableAiAssistant" />
   </div>
 </template>
 
 <script>
-import Cookies from "js-cookie";
-import { getToken, setToken, removeToken } from "@/utils/auth";
+import AiAssistant from "@/components/AiAssistant";
+import { mapState } from "vuex";
 export default {
   name: "App",
+  components: {
+    AiAssistant,
+  },
+  computed: {
+    ...mapState({
+      enableAiAssistant: (state) => state.settings.enableAiAssistant,
+    }),
+  },
   mounted() {
     // var myToken = window.localStorage.getItem("carbonToken");
     // var myCookie = window.localStorage.getItem("carbonCookie");

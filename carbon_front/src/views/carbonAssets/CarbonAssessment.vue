@@ -30,7 +30,7 @@
                     <img
                       class="content_img"
                       style="width: 80px; heigth: 80px; padding-top: 4px"
-                      src="@/assets/imgs/qrcode.png"
+                      :src="qrUrl"
                       alt=""
                     />
                   </div>
@@ -96,10 +96,11 @@
 </template>
 
 <script>
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 export default {
   name: "CarbonAssessment",
   data() {
-    return {};
+    return { qrUrl: getWeChatQrUrl() };
   },
   mounted() {},
   methods: {},

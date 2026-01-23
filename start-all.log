@@ -1,0 +1,212 @@
+**********************
+Windows PowerShell ????
+????: 20260121153435
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 5004
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PS>TerminatingError(mysql.exe):???????????????????ErrorActionPreference????????? Stop: mysql: [Warning] Using a password on the command line interface can be insecure.?
+>> TerminatingError(mysql.exe):???????????????????ErrorActionPreference????????? Stop: mysql: [Warning] Using a password on the command line interface can be insecure.?
+**********************
+Windows PowerShell ????
+????: 20260121153512
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121153606
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 21512
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PS>TerminatingError(mysql.exe):???????????????????ErrorActionPreference????????? Stop: mysql: [Warning] Using a password on the command line interface can be insecure.?
+>> TerminatingError(mysql.exe):???????????????????ErrorActionPreference????????? Stop: mysql: [Warning] Using a password on the command line interface can be insecure.?
+**********************
+Windows PowerShell ????
+????: 20260121153644
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121153903
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 30868
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+Not running as Administrator: will not auto-kill existing port processes. If ports are occupied, rerun as Administrator.
+backend started
+OK
+frontend: http://localhost:9528/
+gate: http://localhost:9091/
+logs: D:\desktop\Carbon_manage_system\carbon_official\start-all.log
+**********************
+Windows PowerShell ????
+????: 20260121154246
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121155026
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 32648
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+Not running as Administrator: will not auto-kill existing port processes. If ports are occupied, rerun as Administrator.
+backend started
+OK
+frontend: http://localhost:9528/
+gate: http://localhost:9091/
+logs: D:\desktop\Carbon_manage_system\carbon_official\start-all.log
+**********************
+Windows PowerShell ????
+????: 20260121155218
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121160309
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 41820
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+Not running as Administrator: will not auto-kill existing port processes. If ports are occupied, rerun as Administrator.
+backend started
+PS>TerminatingError():?????????
+>> TerminatingError():?????????
+>> TerminatingError():?????????
+>> TerminatingError():?????????
+**********************
+Windows PowerShell ????
+????: 20260121162657
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121162705
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 37312
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+PS>TerminatingError():?????????
+>> TerminatingError():?????????
+>> TerminatingError():?????????
+**********************
+Windows PowerShell ????
+????: 20260121163333
+**********************
+**********************
+Windows PowerShell ????
+????: 20260121163339
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\start-all.ps1
+?? ID: 44464
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+**********************
+Windows PowerShell ????
+????: 20260123072101
+???: LAPTOP-HKVKOP2S\xtf
+RunAs ??: LAPTOP-HKVKOP2S\xtf
+????: 
+???: LAPTOP-HKVKOP2S (Microsoft Windows NT 10.0.26100.0)
+??????: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -noexit -command try { . "d:\Users\xtf\AppData\Local\Programs\Trae\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+?? ID: 26756
+PSVersion: 5.1.26100.7462
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.7462
+BuildVersion: 10.0.26100.7462
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+backend services: carbon-auth,carbon-system,carbon-assets,carbon-trade,carbon-gate,carbon-mq,carbon-chainmaker
+backend ports: 9001,9002,9003,9005,9091,9006,9007
+Not running as Administrator: will not auto-kill existing port processes. If ports are occupied, rerun as Administrator.
+carbon-auth started pid 27052
+carbon-system started pid 27124
+carbon-assets started pid 19272
+carbon-trade started pid 9204
+carbon-gate started pid 23028
+carbon-mq started pid 26540
+carbon-chainmaker started pid 11808
+backend started
+PS>TerminatingError(Start-Process):???????ArgumentList??????????? Null ?????????? Null ???????????????
+**********************
+Windows PowerShell ????
+????: 20260123072144
+**********************

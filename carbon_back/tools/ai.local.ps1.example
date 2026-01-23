@@ -1,0 +1,4 @@
+$env:CARBON_AI_BASE_URL="https://api.openai.com"
+$env:CARBON_AI_CHAT_PATH="/v1/chat/completions"
+$env:CARBON_AI_API_KEY="DLXRrSaAZpEiqtkYr2Op6gs44R6CVu9j8fNXm0Zd4E0AZwCy"
+$env:CARBON_AI_MODEL="gpt-4o-mini"

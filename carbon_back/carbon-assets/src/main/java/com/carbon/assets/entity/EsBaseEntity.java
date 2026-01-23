@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * @author Li Jun
@@ -39,7 +39,7 @@ public abstract class EsBaseEntity implements Serializable{
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(value = "创建时间")
 //    @Field(type = FieldType.Date,format = DateFormat.custom,pattern ="uuuu-MM-dd HH:mm:ss")
-    private LocalDate createdTime;
+    private Date createdTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新人ID")
@@ -48,5 +48,5 @@ public abstract class EsBaseEntity implements Serializable{
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
 //    @Field(type = FieldType.Date,format = DateFormat.custom,pattern ="uuuu-MM-dd HH:mm:ss")
-    private LocalDate updatedTime;
+    private Date updatedTime;
 }

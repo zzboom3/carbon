@@ -181,7 +181,7 @@
   </div>
 </template>
 <script>
-import { getEscarbonMethodologyByKeyword } from "@/api/carbonAssetApi";
+import { loadMethodList } from "@/api/carbonAssetApi";
 import { openUrlInNewWindow } from "@/libs/OpenHelper";
 import { getCertificationCriteriaDict } from "@/config/dictHelper";
 import { getBusinessDict } from "@/config/dictHelper";
@@ -227,23 +227,22 @@ export default {
         fieldCode: (this.selectedAreaDict && this.selectedAreaDict[0]) || undefined,
         industryCode: (this.selectedIndustry && this.selectedIndustry[0]) || undefined,
         certificationCriteria: (this.selectedCertification && this.selectedCertification[0]) || undefined,
-        status: "0450000002",
+        statusCode: "0450000002",
         current: this.current,
       };
       if(this.searchKeyWord){
         data["searchKey"] = this.searchKeyWord;
       }
-      getEscarbonMethodologyByKeyword(data)
+      loadMethodList(data)
         .then((res) => {
           const payload = res && res.data ? res.data : {};
-          this.list = payload.data || [];
+          this.list = payload.records || [];
           this.total = Number(payload.total || 0);
           this.current = Number(payload.current || this.current);
           this.pageCount = Math.ceil(parseInt(this.total) / this.pageSize);
           this.list.map((v) => {
             //遍历表格数据
             v.checked = false;
-            v.statusName = this.statusName(v.status);
             for (var i in v) {
               v[i] = v[i] ? v[i] : "--";
             }
@@ -292,22 +291,21 @@ export default {
         industryCode: (this.selectedIndustry && this.selectedIndustry[0]) || undefined,
         certificationCriteria: (this.selectedCertification && this.selectedCertification[0]) || undefined,
         current: page,
-        status: "0450000002",
+        statusCode: "0450000002",
       };
       if(this.searchKeyWord){
         data["searchKey"] = this.searchKeyWord;
       }
-      getEscarbonMethodologyByKeyword(data)
+      loadMethodList(data)
         .then((res) => {
           const payload = res && res.data ? res.data : {};
-          this.list = payload.data || [];
+          this.list = payload.records || [];
           this.total = Number(payload.total || 0);
           this.current = Number(payload.current || page);
           this.pageCount = Math.ceil(parseInt(this.total) / this.pageSize);
           this.list.map((v) => {
             //遍历表格数据
             v.checked = false;
-            v.statusName = this.statusName(v.status);
             for (var i in v) {
               v[i] = v[i] ? v[i] : "--";
             }
@@ -323,21 +321,20 @@ export default {
         industryCode: (this.selectedIndustry && this.selectedIndustry[0]) || undefined,
         certificationCriteria: (this.selectedCertification && this.selectedCertification[0]) || undefined,
         current: this.current,
-        status: "0450000002",
+        statusCode: "0450000002",
       };
       if(this.searchKeyWord){
         data["searchKey"] = this.searchKeyWord;
       }
-      getEscarbonMethodologyByKeyword(data)
+      loadMethodList(data)
         .then((res) => {
           const payload = res && res.data ? res.data : {};
-          this.list = payload.data || [];
+          this.list = payload.records || [];
           this.total = Number(payload.total || 0);
           this.current = Number(payload.current || this.current);
           this.pageCount = Math.ceil(parseInt(this.total) / this.pageSize);
           this.list.map((v) => {
             v.checked = false;
-            v.statusName = this.statusName(v.status);
             for (var i in v) {
               v[i] = v[i] ? v[i] : "--";
             }

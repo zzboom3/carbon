@@ -7,7 +7,7 @@
          </div>
          <div class="bottomDiv">
             <a class="bottomTxt cursor-mi">{{mybottomTxt}}</a>
-            <img class="image marleft30px verticalCenter" src="@/assets/icon/icon_qrcode.jpeg"/>
+            <img class="image marleft30px verticalCenter" :src="qrUrl"/>
          </div>
       </div>
    </el-dialog>
@@ -15,6 +15,7 @@
 <script>
 import {performance} from "@/api/carbonAssetApi";
 import { openUrlInNewWindow } from "@/libs/OpenHelper";
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 export default {
   name: "companyPackage",
   props: {
@@ -27,6 +28,7 @@ export default {
        subTitle: '下单提示',
        mycontent: '是否确认下单？确定为您跳转交易所网站，完成履约。',
        mybottomTxt:'如需帮助，可添加交易专员企业微信，为您做交易引导服务',
+       qrUrl: getWeChatQrUrl(),
        orderData: {}
     }
   },

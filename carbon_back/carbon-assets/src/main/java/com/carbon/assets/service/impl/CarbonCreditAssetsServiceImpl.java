@@ -1,10 +1,14 @@
 package com.carbon.assets.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.carbon.assets.entity.CarbonCreditAssets;
 import com.carbon.assets.mapper.CarbonCreditAssetsMapper;
 import com.carbon.assets.service.CarbonCreditAssetsService;
+import com.carbon.assets.param.CarbonCreditAssetsQueryParam;
 import com.carbon.assets.vo.CarbonAssetsTotalVo;
+import com.carbon.assets.vo.CarbonCreditAssetsQueryVo;
+import com.carbon.common.api.Paging;
 import com.carbon.common.service.BaseServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -46,6 +50,21 @@ public class CarbonCreditAssetsServiceImpl extends BaseServiceImpl<CarbonCreditA
         vo.setFrozenAmount(sum(list, CarbonCreditAssets::getFrozenAmount));
         vo.setLockedAmount(sum(list, CarbonCreditAssets::getLockedAmount));
         return vo;
+    }
+
+    @Override
+    public Paging<CarbonCreditAssetsQueryVo> getCarbonCreditAssetsPageList(CarbonCreditAssetsQueryParam param) {
+        CarbonCreditAssetsQueryParam query = param == null ? new CarbonCreditAssetsQueryParam() : param;
+        IPage<CarbonCreditAssetsQueryVo> iPage = baseMapper.getCarbonCreditAssetsPageList(getPage(query), query);
+        return new Paging<>(iPage.getTotal(), iPage.getCurrent(), iPage.getRecords());
+    }
+
+    @Override
+    public CarbonCreditAssetsQueryVo getCarbonCreditAssetsDetail(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return baseMapper.getCarbonCreditAssetsById(id);
     }
 
     private BigDecimal sum(List<CarbonCreditAssets> list, java.util.function.Function<CarbonCreditAssets, BigDecimal> getter) {

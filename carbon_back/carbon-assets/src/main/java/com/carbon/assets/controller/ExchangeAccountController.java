@@ -8,6 +8,7 @@ import com.carbon.assets.common.BaseController;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.carbon.common.api.Paging;
+import com.carbon.common.utils.HttpContextUtils;
 import com.carbon.domain.common.ApiResult;
 
 import io.swagger.annotations.Api;
@@ -73,6 +74,10 @@ public class ExchangeAccountController extends BaseController {
     @PostMapping("/add")
     @ApiOperation(value = "新增交易账户", notes = "新增交易账户")
     public ApiResult<Boolean> add(@Valid @RequestBody ExchangeAccount data) {
+        Long tenantId = HttpContextUtils.getTenantId();
+        if (tenantId != null) {
+            data.setTenantId(tenantId);
+        }
         return ApiResult.ok(exchangeAccountService.save(data));
     }
 

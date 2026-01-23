@@ -21,4 +21,8 @@ import java.io.Serializable;
 public interface CarbonCreditAssetsService extends BaseService<CarbonCreditAssets> {
 
     CarbonAssetsTotalVo getAssetsTotal();
+
+    Paging<CarbonCreditAssetsQueryVo> getCarbonCreditAssetsPageList(CarbonCreditAssetsQueryParam param);
+
+    CarbonCreditAssetsQueryVo getCarbonCreditAssetsDetail(Long id);
 }

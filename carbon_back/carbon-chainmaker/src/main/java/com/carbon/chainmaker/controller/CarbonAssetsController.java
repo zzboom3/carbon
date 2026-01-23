@@ -17,6 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/carbonAssets")
 @Api(value = "碳交易履约模块", tags = {"碳交易履约模块"})
+@ConditionalOnProperty(prefix = "carbon.chainmaker", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class CarbonAssetsController extends BaseController {
 
     @Autowired
@@ -106,4 +108,3 @@ public class CarbonAssetsController extends BaseController {
     }
 
 }
-

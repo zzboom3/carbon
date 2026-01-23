@@ -81,7 +81,7 @@
         <div style="clear: both"></div>
         <div class="dialog-footer">
           <span class="footer-tip">如需帮助，可添加交易专员企业微信，为您做开户引导服务</span>
-          <img src="@/assets/icon/icon_qrcode.jpeg" alt="" class="img" />
+          <img :src="qrUrl" alt="" class="img" />
         </div>
       </el-dialog>
     </div>
@@ -92,6 +92,7 @@
 import { loadCarbonExchangeList } from "@/api/carbonAssetApi";
 import { setListNo } from "@/libs/public";
 import { openUrlInNewWindow } from "@/libs/OpenHelper";
+import { getWeChatQrUrl } from "@/utils/wechatQr";
 
 export default {
   name: "exchangeManager",
@@ -107,6 +108,7 @@ export default {
       pageSize: 10,
       exchangesUrl: "https://carbonmsger.feishu.cn/drive/folder/fldcn66yo6D4OoXwZqEMHL6OQSg?from=space_persnoal_filelist",
       openUrl: "",
+      qrUrl: getWeChatQrUrl(),
     };
   },
   mounted() {

@@ -124,9 +124,27 @@ public class DictSerializerModifier extends BeanSerializerModifier {
                 return defaultName;
             }
 
-            List<SysDictModelVo> modelVos = JSONUtil.toList(redisService.get(RedisKeyName.SYS_DICT_KEY + dictCode), SysDictModelVo.class);
+            String cache;
+            try {
+                cache = redisService.get(RedisKeyName.SYS_DICT_KEY + dictCode);
+            } catch (Exception ignored) {
+                return defaultName;
+            }
+            if (StrUtil.isBlank(cache)) {
+                return defaultName;
+            }
+
+            List<SysDictModelVo> modelVos;
+            try {
+                modelVos = JSONUtil.toList(cache, SysDictModelVo.class);
+            } catch (Exception ignored) {
+                return defaultName;
+            }
+            if (modelVos == null || modelVos.isEmpty()) {
+                return defaultName;
+            }
             for (SysDictModelVo dictModel : modelVos) {
-                if (dictModel.getValue().equals(String.valueOf(value))) {
+                if (dictModel != null && dictModel.getValue() != null && dictModel.getValue().equals(String.valueOf(value))) {
                     return dictModel.getName();
                 }
             }

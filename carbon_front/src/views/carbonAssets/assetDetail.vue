@@ -316,7 +316,7 @@ export default {
       this.assetId = id.id;
       carbonAssetDetail(this.assetId).then(
         (res) => {
-          this.assetDetail = (res && res.data) || {};
+          this.assetDetail = (res && (res.id || res.carbonProjectId)) ? res : ((res && res.data) || {});
 
           this.assetDetail["issuingDate"] = this.assetDetail["issuingDate"]
             ? this.formatDate(this.assetDetail["issuingDate"])

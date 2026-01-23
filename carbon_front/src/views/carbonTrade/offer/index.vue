@@ -105,12 +105,21 @@ export default {
       if (this.projectScopeCode) {
         param.projectScopeCode = this.projectScopeCode
       }
-      getCarbonTradePriceList(param).then((res) => {
-        this.list = (res && res.records) || []
-        this.total = parseInt((res && res.total) || 0)
-        this.current = parseInt((res && res.current) || page)
-        this.pageCount = Math.ceil(this.total / this.pageSize)
-      })
+      getCarbonTradePriceList(param)
+        .then((res) => {
+          const paging = (res && res.records) ? res : (res && res.data && res.data.records ? res.data : null)
+          this.list = (paging && paging.records) || []
+          this.total = parseInt((paging && paging.total) || 0)
+          this.current = parseInt((paging && paging.current) || page)
+          this.pageCount = Math.ceil(this.total / this.pageSize)
+        })
+        .catch((err) => {
+          this.list = []
+          this.total = 0
+          this.current = page
+          this.pageCount = 1
+          this.$message((err && err.msg) || "询报价列表加载失败")
+        })
     },
     openDetail(row) {
       if (!row || !row.id) return

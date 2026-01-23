@@ -3,9 +3,14 @@ package com.carbon.assets.controller;
 import cn.hutool.core.bean.BeanUtil;
 import com.carbon.assets.param.CarbonExchangeQueryParam;
 import com.carbon.assets.entity.CarbonExchange;
+import com.carbon.assets.entity.ExchangeAccount;
 import com.carbon.assets.common.BaseController;
 import com.carbon.assets.service.CarbonExchangeService;
+import com.carbon.assets.service.ExchangeAccountService;
+import com.carbon.assets.vo.CarbonExchangeAccountVo;
+import com.carbon.assets.vo.ExchangeAccountInfo;
 import com.carbon.common.api.Paging;
+import com.carbon.common.utils.HttpContextUtils;
 import com.carbon.domain.common.ApiResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,6 +26,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Resource;
 
 
@@ -40,6 +46,9 @@ public class CarbonExchangeController extends BaseController {
 
     @Resource
     private CarbonExchangeService carbonExchangeService;
+
+    @Resource
+    private ExchangeAccountService exchangeAccountService;
 
     @PostMapping("/getPageList")
     @ApiOperation(value = "交易所分页列表", notes = "交易所分页列表")
@@ -82,15 +91,34 @@ public class CarbonExchangeController extends BaseController {
 
     @PostMapping("/getListByTenant")
     @ApiOperation(value = "按租户获取交易所列表(兼容前端)", notes = "按租户获取交易所列表")
-    public ApiResult<List<Map<String, Object>>> getListByTenant(@RequestBody(required = false) Object param) {
-        List<CarbonExchange> list = carbonExchangeService.list();
-        List<Map<String, Object>> result = new ArrayList<>();
-        for (CarbonExchange e : list) {
-            Map<String, Object> m = new HashMap<>();
-            m.put("id", e.getId());
-            m.put("exchangeName", e.getName());
-            m.put("accountInfoList", new ArrayList<>());
-            result.add(m);
+    public ApiResult<List<CarbonExchangeAccountVo>> getListByTenant(@RequestBody(required = false) Map<String, Object> param) {
+        Long tenantId = HttpContextUtils.getTenantId();
+        if (tenantId == null && param != null && param.get("tenantId") != null) {
+            tenantId = Long.parseLong(String.valueOf(param.get("tenantId")));
+        }
+
+        List<CarbonExchange> exchanges = carbonExchangeService.list();
+        List<ExchangeAccount> accounts = tenantId == null ? new ArrayList<>() : exchangeAccountService.list(
+                Wrappers.lambdaQuery(ExchangeAccount.class)
+                        .eq(ExchangeAccount::getTenantId, tenantId)
+                        .orderByDesc(ExchangeAccount::getId)
+        );
+
+        Map<Long, List<ExchangeAccountInfo>> accountByExchangeId = accounts.stream()
+                .map(a -> {
+                    ExchangeAccountInfo info = new ExchangeAccountInfo();
+                    BeanUtil.copyProperties(a, info);
+                    return info;
+                })
+                .collect(Collectors.groupingBy(ExchangeAccountInfo::getCarbonExchangeId));
+
+        List<CarbonExchangeAccountVo> result = new ArrayList<>();
+        for (CarbonExchange e : exchanges) {
+            CarbonExchangeAccountVo vo = new CarbonExchangeAccountVo();
+            vo.setId(e.getId());
+            vo.setExchangeName(e.getName());
+            vo.setAccountInfoList(accountByExchangeId.getOrDefault(e.getId(), new ArrayList<>()));
+            result.add(vo);
         }
         return ApiResult.ok(result);
     }

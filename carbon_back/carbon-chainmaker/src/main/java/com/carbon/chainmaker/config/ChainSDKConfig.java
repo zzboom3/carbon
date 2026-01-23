@@ -7,6 +7,7 @@ import org.chainmaker.sdk.config.NodeConfig;
 import org.chainmaker.sdk.config.SdkConfig;
 import org.chainmaker.sdk.utils.UtilsException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.yaml.snakeyaml.Yaml;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@ConditionalOnProperty(prefix = "carbon.chainmaker", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class ChainSDKConfig {
 
     private static final String OPENSSL_PROVIDER = "openSSL";

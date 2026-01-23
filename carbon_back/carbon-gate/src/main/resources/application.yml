@@ -18,17 +18,17 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://${CARBON_MYSQL_HOST:localhost}:${CARBON_MYSQL_PORT:3306}/${CARBON_MYSQL_DB:carbon}?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://${CARBON_MYSQL_HOST:192.168.100.128}:${CARBON_MYSQL_PORT:3333}/${CARBON_MYSQL_DB:carbon}?useUnicode=true&characterEncoding=utf8
       username: ${CARBON_MYSQL_USER:root}
       password: ${CARBON_MYSQL_PASSWORD:root}
   redis:
-    host: ${CARBON_REDIS_HOST:localhost}
+    host: ${CARBON_REDIS_HOST:192.168.100.128}
     port: ${CARBON_REDIS_PORT:6379}
     password: ${CARBON_REDIS_PASSWORD:}
   cloud:
     nacos:
       discovery:
-        server-addr: ${CARBON_NACOS_ADDR:localhost:8848}
+        server-addr: ${CARBON_NACOS_ADDR:192.168.100.128:8848}
   servlet:
     multipart:
       max-file-size: 50MB
@@ -82,4 +82,15 @@ ribbon:
 knife4j:
   nacos:
     enable: true
-    serviceUrl: http://${CARBON_NACOS_ADDR:localhost:8848}/nacos/
+    serviceUrl: http://${CARBON_NACOS_ADDR:192.168.100.128:8848}/nacos/
+
+carbon:
+  ai:
+    base-url: ${CARBON_AI_BASE_URL:https://api.openai.com}
+    chat-path: ${CARBON_AI_CHAT_PATH:/v1/chat/completions}
+    api-key: ${CARBON_AI_API_KEY:}
+    model: ${CARBON_AI_MODEL:gpt-4o-mini}
+    connect-timeout-seconds: ${CARBON_AI_CONNECT_TIMEOUT_SECONDS:15}
+    read-timeout-seconds: ${CARBON_AI_READ_TIMEOUT_SECONDS:120}
+    auth-header-name: ${CARBON_AI_AUTH_HEADER_NAME:Authorization}
+    auth-header-prefix: ${CARBON_AI_AUTH_HEADER_PREFIX:Bearer }
